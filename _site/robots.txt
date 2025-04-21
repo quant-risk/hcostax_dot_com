@@ -1,1 +1,1 @@
-Sitemap: https://hcostax.com/sitemap.xml
+Sitemap: https://henriqueqrm.netlify.app/sitemap.xml

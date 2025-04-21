@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Risk Taker!</title>
-<link>https://hcostax.com/blog/</link>
-<atom:link href="https://hcostax.com/blog/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://henriqueqrm.netlify.app/blog/</link>
+<atom:link href="https://henriqueqrm.netlify.app/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>I&#39;m a backpacker sharing my journey into quantitative financial risks in the hopes that you don&#39;t have to suffer on your journey too. &lt;/br&gt;</description>
 <generator>quarto-1.5.57</generator>
 <lastBuildDate>Sat, 19 Oct 2024 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Financial Cycle: Credit - Part I</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/financial_cycle_credit_01/</link>
+  <link>https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -27,7 +27,7 @@
 
 
 
-<p><a href="feature.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/financial_cycle_credit_01/feature.svg" class="img-fluid"></a></p>
+<p><a href="feature.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/feature.svg" class="img-fluid"></a></p>
 <p><br></p>
 <p>After a really cool chat over coffee with my friend Catarina and some discussions on the topic of cycles and time series with my friends <a href="https://www.linkedin.com/in/emanuella-c-duarte-64839717b/">Emanuella</a> and <a href="https://www.linkedin.com/in/patr%C3%ADcia-melo-46a928b0/">Patrícia</a>, I thought about writing an article here for this blog and resurrecting it, updating and improving an analysis I did some time ago and published on LinkedIn, which can be accessed through this link: <a href="https://www.linkedin.com/feed/update/urn:li:activity:6874875270143209472/">Credit Granting can be used as a proxy for the Financial Cycle, which tends to present a “boom” before the beginning of a recession.</a></p>
 <p>Based on the study <a href="https://cmsarquivos.febraban.org.br/Arquivos/documentos/PDF/Paper3_PUC.pdf">“The Financial Cycle in Brazil”</a> carried out in the 3rd Project of the 2018 <a href="https://portal.febraban.org.br/pagina/3252/23/pt-br/convenio-cooperacao-2017-2018">Agreement between FEBRABAN (Brazilian Federation of Banks) and PUC - Rio (Pontifical Catholic University of Rio de Janeiro)</a>, where the authors describe the five main stylized characteristics of the financial cycle based on the work of <a href="https://www.bis.org/publ/work395.pdf">Borio (2012)</a>, which are:</p>
@@ -64,7 +64,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -77,7 +77,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -92,7 +92,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -106,7 +106,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -132,7 +132,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="624"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="624"></a></p>
 </figure>
 </div>
 </div>
@@ -145,7 +145,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -160,7 +160,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -182,7 +182,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -195,7 +195,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://hcostax.com/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="480"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="480"></a></p>
 </figure>
 </div>
 </div>
@@ -229,14 +229,14 @@ October 19, 2024. <a href="https://doi.org/10.59350/tne4j-4je60">https://doi.org
   <category>Credit</category>
   <category>Cycle</category>
   <category>DataViz</category>
-  <guid>https://hcostax.com/blog/financial_cycle_credit_01/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/</guid>
   <pubDate>Sat, 19 Oct 2024 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/financial_cycle_credit_01/feature.svg" medium="image" type="image/svg+xml"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/financial_cycle_credit_01/feature.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Trivia Series: Modelling foundations</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/modelling_foundations/</link>
+  <link>https://henriqueqrm.netlify.app/blog/modelling_foundations/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -249,7 +249,7 @@ October 19, 2024. <a href="https://doi.org/10.59350/tne4j-4je60">https://doi.org
 
 
 
-<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/modelling_foundations/feature.jpg" class="img-fluid"></a></p>
+<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/modelling_foundations/feature.jpg" class="img-fluid"></a></p>
 <section id="modeling-principles" class="level1">
 <h1>Modeling Principles</h1>
 <p>Almost all, if not all, applied science is based on the idea of a model. There are problems in the real world, and we would like to create a theory to solve such problems.</p>
@@ -261,14 +261,14 @@ October 19, 2024. <a href="https://doi.org/10.59350/tne4j-4je60">https://doi.org
 <p>The “effect” is what we seek, in a simplified way, to solve the real problem, and the “residue” is what corroborates our effect, the residue is the acid test of the model and will demonstrate how too simple the model is, or how too complex the model is.</p>
 <p>It is necessary to move between the simple and the complex to centralize the effect. If the effect is central, and the residue is coherent and parsimonious, then the model has fulfilled its main objective: in a simple way, to represent the complex reality.</p>
 <p>And here is how this process works:</p>
-<p><a href="./img/flux_one.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://hcostax.com/blog/modelling_foundations/img/flux_one.png" class="img-fluid"></a></p>
+<p><a href="./img/flux_one.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://henriqueqrm.netlify.app/blog/modelling_foundations/img/flux_one.png" class="img-fluid"></a></p>
 <p><br></p>
 <p>The problems observed in the real world are very complex, and to solve them we need to look for the exact solution.</p>
 <p>But if the problem is complex, the solution must be just as complex, and that is why it is necessary to simplify. We can solve some problems with approximate solutions, and this is feasible. However, an approximate solution requires an approximate problem.</p>
 <p>In this sense, we observe the real problem and conditionally create a simplified version that we call an approximate problem, since it is in fact close to the real one, only some simplifications have occurred to allow us to study, estimate, test and theorize.</p>
 <p>From the approximated (simplified) problem it is possible to obtain an exact solution. Therefore, it is feasible that the exact solution of the approximated problem is the approximate solution of the real problem.</p>
 <p>And so the fundamental process of modeling occurs:</p>
-<p><a href="./img/flux_two.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://hcostax.com/blog/modelling_foundations/img/flux_two.png" class="img-fluid"></a></p>
+<p><a href="./img/flux_two.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://henriqueqrm.netlify.app/blog/modelling_foundations/img/flux_two.png" class="img-fluid"></a></p>
 <p>This very simplistic process allows us to see that the model is nothing more than a simplification of the real problem, as I mentioned before. Using the model, it is possible to analyze the results found without needing to have the solution. The analysis of the model serves to understand the nuances of the results in order to draw conclusions about the simplification that was created. Sometimes we will not have the solution we are looking for, but we can have conclusions, even if simplified, about the real problem.</p>
 <p>The analysis and conclusions of the model allow us to generate inference, which is the deduction made based on the reasoning generated by the analysis, and from the inference we can explain, even if in a simplified way, the real problem and make estimates and predictions.</p>
 <p>The final step is the decision or choice that we make based on the understanding and estimates. With this, we monitor and verify whether our model is sufficient to reach an approximate solution to the real problem. Therefore, we verify whether our choices for applying the model results are meeting the expectations based on the estimates of our model.</p>
@@ -305,14 +305,14 @@ Foundations.”</span> August 25, 2024. <a href="https://doi.org/10.59350/rzbj1-
   <category>Maths</category>
   <category>Stats</category>
   <category>Model</category>
-  <guid>https://hcostax.com/blog/modelling_foundations/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/modelling_foundations/</guid>
   <pubDate>Sun, 25 Aug 2024 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/modelling_foundations/feature.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/modelling_foundations/feature.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Sorte e Apostas</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/sorte_apostas/</link>
+  <link>https://henriqueqrm.netlify.app/blog/sorte_apostas/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -325,7 +325,7 @@ Foundations.”</span> August 25, 2024. <a href="https://doi.org/10.59350/rzbj1-
 
 
 
-<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/sorte_apostas/feature.png" class="img-fluid"></a></p>
+<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/sorte_apostas/feature.png" class="img-fluid"></a></p>
 <p><br></p>
 <p><br></p>
 <p><br></p>
@@ -362,14 +362,14 @@ Costa, Henrique. 2024. <span>“Sorte e Apostas.”</span> April 16, 2024.
 </div></div></section></div> ]]></description>
   <category>Tomada de Decisão</category>
   <category>Riscos</category>
-  <guid>https://hcostax.com/blog/sorte_apostas/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/sorte_apostas/</guid>
   <pubDate>Tue, 16 Apr 2024 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/sorte_apostas/feature.png" medium="image" type="image/png" height="81" width="144"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/sorte_apostas/feature.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 <item>
   <title>Trivia Series: Regression</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/regression/</link>
+  <link>https://henriqueqrm.netlify.app/blog/regression/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -382,7 +382,7 @@ Costa, Henrique. 2024. <span>“Sorte e Apostas.”</span> April 16, 2024.
 
 
 
-<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/regression/feature.png" class="img-fluid"></a></p>
+<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/regression/feature.png" class="img-fluid"></a></p>
 <section id="rambling-proxy-for-an-introduction" class="level1">
 <h1>Rambling (proxy for an introduction)</h1>
 <p>We are experiencing the chaos of the information age, and its technological advents with voracious evolution and expansion. And in the midst of all this we have the advent of Big Data that has reached the delights of many with Data Science, Machine Learning and Artificial Intelligence.</p>
@@ -408,7 +408,7 @@ Costa, Henrique. 2024. <span>“Sorte e Apostas.”</span> April 16, 2024.
 <p>An example using Brazil, a country with a tropical climate, it is correct to say that the natural state of the climate is heat, as it is sunny many more days a year than cold or rainy, therefore, on average it is hotter, so the normal of Brazil is to have sunny days, but when it rains we can activate the idea of normality, in which the rain can soon stop and the sun and high temperatures return to the scene.</p>
 <p>Regression to the mean is exactly that, even if you have days with rain, the “normal” is that there are more sunny days, so rainy days are deviations between the averages, as the average is sunny days. But the term became known even after Galton published a study in 1885 in which he demonstrated, through regression calculations, that the height of children does not tend to reflect the height of their parents, but rather tends to regress towards the population average.</p>
 <p>It is possible to see how the term gained scale after use by Galton, using the Google tool: Ngram book viewer.</p>
-<p><a href="./img/ngram_regression.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://hcostax.com/blog/regression/img/ngram_regression.jpg" class="img-fluid"></a></p>
+<p><a href="./img/ngram_regression.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://henriqueqrm.netlify.app/blog/regression/img/ngram_regression.jpg" class="img-fluid"></a></p>
 </section>
 <section id="the-use-of-regression" class="level1">
 <h1>The use of regression</h1>
@@ -745,7 +745,7 @@ font-style: inherit;">"Source: Economics Report of the President, 2007, Table B-
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://hcostax.com/blog/regression/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="index_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://henriqueqrm.netlify.app/blog/regression/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -828,14 +828,14 @@ December 20, 2023. <a href="https://doi.org/10.59350/xs70x-mar87">https://doi.or
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>DataViz</category>
-  <guid>https://hcostax.com/blog/regression/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/regression/</guid>
   <pubDate>Wed, 20 Dec 2023 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/regression/feature.png" medium="image" type="image/png" height="74" width="144"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/regression/feature.png" medium="image" type="image/png" height="74" width="144"/>
 </item>
 <item>
   <title>A few words about risk management</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/risk_intro/</link>
+  <link>https://henriqueqrm.netlify.app/blog/risk_intro/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -848,7 +848,7 @@ December 20, 2023. <a href="https://doi.org/10.59350/xs70x-mar87">https://doi.or
 
 
 
-<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/risk_intro/feature.jpg" class="img-fluid"></a></p>
+<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/risk_intro/feature.jpg" class="img-fluid"></a></p>
 <p>I started this website some time ago with the aim of writing down the expansion of my knowledge and experience in the area of financial risk management. And also other things like programming with R, econometric modeling and a little about <em>data science</em> and <em>machine learning</em>. So I’m going to use this publication as a starting point, and start discussing texts and examples applied to financial risks.</p>
 <p>I am not going to give a general and complete description of what financial risk is and its management processes, as this can be easily found on sites like Wikipedia.</p>
 <p>But risk, in the most basic sense, is the possibility that bad things will happen. Humans have evolved to manage risks like wild animals do. However, our awareness of risk is not always adequate for the modern world.</p>
@@ -882,14 +882,14 @@ August 27, 2023. <a href="https://doi.org/10.59350/51paw-dza08">https://doi.org/
   <category>Management</category>
   <category>Risk</category>
   <category>Finance</category>
-  <guid>https://hcostax.com/blog/risk_intro/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/risk_intro/</guid>
   <pubDate>Sun, 27 Aug 2023 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/risk_intro/feature.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/risk_intro/feature.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>For me, the choice was R or Python</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/r_or_python/</link>
+  <link>https://henriqueqrm.netlify.app/blog/r_or_python/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -902,7 +902,7 @@ August 27, 2023. <a href="https://doi.org/10.59350/51paw-dza08">https://doi.org/
 
 
 
-<p><a href="feature.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/r_or_python/feature.jpeg" class="img-fluid"></a></p>
+<p><a href="feature.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/r_or_python/feature.jpeg" class="img-fluid"></a></p>
 <p>Having decided to improve my skills in the short space of time left between my professional life and personal life, I started researching the available data science options. It quickly became clear that I should choose a programming language to learn and apply the techniques and the choice fell on R or Python, for me both options are good because they are free and open source and have an excellent reputation, in addition to each one having its own own community of active users, and very active!</p>
 <p>I don’t remember where I saw this tip, but for me it was the central factor in my decision and something worth sharing:</p>
 <p>If you are a professional who uses analysis tools in a business context, and with experience in Microsoft Excel, my tip is: select R to start your journey in data science. R is a single-threaded object-oriented functional programming language, and once you understand the main commands, it is intuitive to use. As such, it’s pretty predictable, which has been great for me as a professional. R has an excellent graphics package that complements the idea of analyzing data or <em>data wrangling</em>, which Python programmers often turn to <em>ggplot2</em> to generate beautiful visualizations, or use the ggplot2 theme within Python (lol), even though in recent years the Python’s visualization libraries have improved a lot, yet this happens frequently.</p>
@@ -946,14 +946,14 @@ Python.”</span> June 20, 2023. <a href="https://doi.org/10.59350/83vew-1de35">
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>Python</category>
-  <guid>https://hcostax.com/blog/r_or_python/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/r_or_python/</guid>
   <pubDate>Tue, 20 Jun 2023 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/r_or_python/feature.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/r_or_python/feature.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Reproduzindo gráfico do Economista Visual - Valor da cesta básica (PT-BR)</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/desafio_EconViz_01/</link>
+  <link>https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -966,15 +966,15 @@ Python.”</span> June 20, 2023. <a href="https://doi.org/10.59350/83vew-1de35">
 
 
 
-<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/desafio_EconViz_01/feature.png" class="img-fluid"></a></p>
+<p><a href="feature.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/feature.png" class="img-fluid"></a></p>
 <p>Na publicação de hoje, quero trazer uma brincadeira que fiz comigo mesmo, um pequeno incentivo para voltar a publicar conteúdos sobre R (eu já estava enferrujado) entre outros assunto sobre economia.</p>
 <p>Passeando pelo instagram, encontrei um perfil que pública muita informação sobre economia em formato de visualização, o Economista Visual.</p>
 <p>Vendo um gráfico sobre o <a href="https://www.instagram.com/p/CLaQpRiB8pR/">preço da cesta básica na cidade de São Paulo - SP</a></p>
-<p><a href="./img/cestabasica.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://hcostax.com/blog/desafio_EconViz_01/img/cestabasica.jpg" class="img-fluid"></a></p>
+<p><a href="./img/cestabasica.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/img/cestabasica.jpg" class="img-fluid"></a></p>
 <p>Resolvi criar o desafio de <strong>reproduzir</strong> esta visualização. Claro que não conseguiria deixar igual, mas poderia chegar bem perto.</p>
 <p>Vamos começar pela fonte dos dados. Os dados utilizado no gráfico vem da base do DIEESE (Departamento Intersindical de Estatística e Estudos Socioeconômicos), que faz o levantamento do valor da Cesta Básica de Alimentos em várias cidades do país.</p>
 <p>Acessando o website do DIEESE, na pagina do banco de dados de <a href="https://www.dieese.org.br/cesta/">Cesta Básica de Alimentos</a> é possível escolher a cidade desejada e fazer o <em>download</em> da planilha contendo as informações sobre o valor da cesta básica.</p>
-<p><a href="./img/db_dieese.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://hcostax.com/blog/desafio_EconViz_01/img/db_dieese.jpg" class="img-fluid"></a></p>
+<p><a href="./img/db_dieese.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/img/db_dieese.jpg" class="img-fluid"></a></p>
 <p>Com os dados em mãos, é hora de ir para o RStudio e começar “os trabalhos”. <em>Let’s Code!</em></p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2535,7 +2535,7 @@ font-style: inherit;"># gerando o gráfico</span></span>
 background-color: null;
 font-style: inherit;"># ---</span></span></code></pre></div>
 <p>Esse enorme bloco de código gera o gráfico final. O resultado foi bastante satisfatório (p/ mim, rsrs). Após executar todos esses passos temos o gráfico:</p>
-<p><a href="./img/cesta_basica.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://hcostax.com/blog/desafio_EconViz_01/img/cesta_basica.png" class="img-fluid"></a></p>
+<p><a href="./img/cesta_basica.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/img/cesta_basica.png" class="img-fluid"></a></p>
 <p>O gráfico não ficou exatamente igual ao gráfico publicado no perfil do Economista Visual no instagram, mas chegamos bem próximo. O objetivo aqui foi reproduzir a informação, e para deixar mais divertido, reproduzir aos moldes do original.</p>
 <p>Você também pode reproduzir isso escolhendo a cidade que quiser.</p>
 <p>Confira o código completo no meu <a href="https://github.com/hcostax/01---Desafio_EconomistaVisual">Github</a>.</p>
@@ -2561,14 +2561,14 @@ Costa, Henrique. 2021. <span>“Reproduzindo Gráfico Do Economista Visual
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>DataViz</category>
-  <guid>https://hcostax.com/blog/desafio_EconViz_01/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/</guid>
   <pubDate>Sat, 20 Feb 2021 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/desafio_EconViz_01/feature.png" medium="image" type="image/png" height="103" width="144"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/desafio_EconViz_01/feature.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 <item>
   <title>Can Economists Become Data Scientists?</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/economists_in_data_science/</link>
+  <link>https://henriqueqrm.netlify.app/blog/economists_in_data_science/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -2581,7 +2581,7 @@ Costa, Henrique. 2021. <span>“Reproduzindo Gráfico Do Economista Visual
 
 
 
-<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/economists_in_data_science/feature.jpg" class="img-fluid"></a></p>
+<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/economists_in_data_science/feature.jpg" class="img-fluid"></a></p>
 <p>When it comes to job titles, data scientist is one of the biggest buzzwords in recent years. It is also one of the fastest growing fields of professional activity. Can an economist really be a data scientist? What skills are needed?</p>
 <p>Exposed as the <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">“sexiest job of the 21st century”</a> by <strong><em>Harvard Business Review</em></strong>, here I will discuss the reasons why an economist proclaims himself as a Data Scientist, and that goes far beyond <em>hype</em>.</p>
 <p>Data Scientist, this is the new field of activity that everyone is talking about these days, and that almost everyone wants to be part of it now. It is certainly a very interesting field of professional activity, as it was born from the combination of multidisciplinary and complementary techniques, which did not require much scientific formalism and academic consolidation to be called a Science or Profession. Why?</p>
@@ -2611,7 +2611,53 @@ Costa, Henrique. 2021. <span>“Reproduzindo Gráfico Do Economista Visual
 <h3 class="anchored" data-anchor-id="economist-already-knows-machine-learning">Economist already knows machine learning!</h3>
 <p>Before you think about stopping reading, thinking that this article is already “travelling” or that the writer must have gone to a very strange economics college to learn about machine learning, but be careful:</p>
 <p>Machine learning is really just a fancy word for statistical and predictive modeling that programmers invented to make their business look better, get more attention, and even keep non-participants out of their club. Maybe they should know something about economics, after all — scarcity raises prices! (laughter).</p>
-<p></p><div id="tweet-21599"></div><script>tweet={"url":"https:\/\/twitter.com\/hcostax\/status\/1173923414614188032","author_name":"Henrique Costa","author_url":"https:\/\/twitter.com\/hcostax","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"pt\" dir=\"ltr\"\u003EAgora eu me sinto um Machine Learning Engineer, com meu framework em econometria. \uD83E\uDD2D\u003C\/p\u003E&mdash; Henrique Costa (@hcostax) \u003Ca href=\"https:\/\/twitter.com\/hcostax\/status\/1173923414614188032?ref_src=twsrc%5Etfw\"\u003ESeptember 17, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-21599").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-82588"></div><script>tweet=<!DOCTYPE html>
+<html lang="en" class="dog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X / ?</title>
+    <meta name="version" content="1">
+    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
+  </head>
+  <body dir="auto">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
+        <defs/>
+        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="content">
+        <a href="https://twitter.com" title="X logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+        </a>
+        <h1 id="header">Nothing to see here</h1>
+        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
+
+          <a id="button_search" href="/" class="button">Looking for this?</a>
+
+      </div>
+      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
+      <div class="footer">
+        <ul>
+          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
+          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
+          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
+          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
+          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
+          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
+          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
+          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
+
+;document.getElementById("tweet-82588").innerHTML = tweet["html"];<p></p>
 <p>A well-observed fact is that the first two modules of a machine learning course (I’m commenting on the most popular one on the Coursera website) are linear regression and logistic regression. (sarcastic laughter)</p>
 <p>Well, 99.99% of economists who took an introductory econometrics course, this may surprise you, but these economists probably have a deeper knowledge of linear regression than a junior or full-time data scientist.</p>
 <p>Just as it can be scary to come across names like “neural networks” or <em>“support vector machines — SVM”</em>, the economist would possibly have to work very hard, even break a sweat to find the term “heteroscedasticity” anywhere in machine learning programs.</p>
@@ -2631,11 +2677,57 @@ Costa, Henrique. 2021. <span>“Reproduzindo Gráfico Do Economista Visual
 <p>Not to mention that most models are sensitive to their own basic assumptions. A serious talk would not end without someone mentioning another possible source of bias, attenuation bias, survival bias, selection bias, measurement error, reverse causality, truncation, censoring, omission, spurious correlation, etc.</p>
 <p>For each problem, there was another model — even more complicated — to deal with it. A model that could also introduce its own baggage of assumptions and problems. The world of econometrics became confusing and more nebulous as the disciplines advanced, in addition to creating the impression of being uncertain and frustratingly limiting. Then Artificial Intelligence, <em>Machine Learning</em> and Data Science emerged to illuminate this dark path.</p>
 <p><em><strong>Warning:</strong> gross exaggeration ahead.</em></p>
-<p></p><div id="tweet-55571"></div><script>tweet={"url":"https:\/\/twitter.com\/hcostax\/status\/1169567629188763649","author_name":"Henrique Costa","author_url":"https:\/\/twitter.com\/hcostax","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"pt\" dir=\"ltr\"\u003EUm dos momentos mais singulares da minha vida foi quando descobri que inteligência artificial é tudo modelo de otimização.\u003C\/p\u003E&mdash; Henrique Costa (@hcostax) \u003Ca href=\"https:\/\/twitter.com\/hcostax\/status\/1169567629188763649?ref_src=twsrc%5Etfw\"\u003ESeptember 5, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-55571").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-27323"></div><script>tweet=<!DOCTYPE html>
+<html lang="en" class="dog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X / ?</title>
+    <meta name="version" content="1">
+    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
+  </head>
+  <body dir="auto">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
+        <defs/>
+        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="content">
+        <a href="https://twitter.com" title="X logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+        </a>
+        <h1 id="header">Nothing to see here</h1>
+        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
+
+          <a id="button_search" href="/" class="button">Looking for this?</a>
+
+      </div>
+      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
+      <div class="footer">
+        <ul>
+          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
+          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
+          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
+          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
+          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
+          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
+          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
+          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
+
+;document.getElementById("tweet-27323").innerHTML = tweet["html"];<p></p>
 <p>Compared to all this, machine learning is wonderfully, charmingly simpler. Instead of solving models explicitly — based on strict assumptions — they are estimated iteratively with the gradient method (and its derivatives). Rather than testing or validating the theory behind the event you are trying to study, and carefully selecting explanatory variables and the appropriate model, you can try everything you can think of and see if the answer holds up.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/einstein-machine-learning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Albert Einstein: “Insanity is continuing to do the same thing over and over again and expecting different results.” Machine Learning:"><img src="https://hcostax.com/blog/economists_in_data_science/img/einstein-machine-learning.png" class="img-fluid figure-img" alt="Albert Einstein: “Insanity is continuing to do the same thing over and over again and expecting different results.” Machine Learning:"></a></p>
+<p><a href="./img/einstein-machine-learning.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Albert Einstein: “Insanity is continuing to do the same thing over and over again and expecting different results.” Machine Learning:"><img src="https://henriqueqrm.netlify.app/blog/economists_in_data_science/img/einstein-machine-learning.png" class="img-fluid figure-img" alt="Albert Einstein: “Insanity is continuing to do the same thing over and over again and expecting different results.” Machine Learning:"></a></p>
 <figcaption>Albert Einstein: “Insanity is continuing to do the same thing over and over again and expecting different results.” Machine Learning:</figcaption>
 </figure>
 </div>
@@ -2692,14 +2784,14 @@ Scientists?”</span> October 29, 2018. <a href="https://doi.org/10.59350/ggmnk-
   <category>Theory</category>
   <category>Data Science</category>
   <category>Econometrics</category>
-  <guid>https://hcostax.com/blog/economists_in_data_science/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/economists_in_data_science/</guid>
   <pubDate>Mon, 29 Oct 2018 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/economists_in_data_science/feature.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/economists_in_data_science/feature.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>The mathematization of Economics</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/maths_economics/</link>
+  <link>https://henriqueqrm.netlify.app/blog/maths_economics/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -2712,9 +2804,55 @@ Scientists?”</span> October 29, 2018. <a href="https://doi.org/10.59350/ggmnk-
 
 
 
-<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/maths_economics/feature.jpg" class="img-fluid"></a></p>
+<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/maths_economics/feature.jpg" class="img-fluid"></a></p>
 <p>In today’s post, I want to start a discussion about the use of mathematics and statistics in economics, and with this shocking sentence:</p>
-<p></p><div id="tweet-26211"></div><script>tweet={"url":"https:\/\/twitter.com\/hcostax\/status\/1167043313846935552","author_name":"Henrique Costa","author_url":"https:\/\/twitter.com\/hcostax","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EMathematical economics is a redundant expression.\u003Ca href=\"https:\/\/twitter.com\/hashtag\/economics?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#economics\u003C\/a\u003E \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Economia?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Economia\u003C\/a\u003E\u003C\/p\u003E&mdash; Henrique Costa (@hcostax) \u003Ca href=\"https:\/\/twitter.com\/hcostax\/status\/1167043313846935552?ref_src=twsrc%5Etfw\"\u003EAugust 29, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-26211").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-71357"></div><script>tweet=<!DOCTYPE html>
+<html lang="en" class="dog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X / ?</title>
+    <meta name="version" content="1">
+    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
+  </head>
+  <body dir="auto">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
+        <defs/>
+        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="content">
+        <a href="https://twitter.com" title="X logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+        </a>
+        <h1 id="header">Nothing to see here</h1>
+        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
+
+          <a id="button_search" href="/" class="button">Looking for this?</a>
+
+      </div>
+      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
+      <div class="footer">
+        <ul>
+          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
+          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
+          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
+          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
+          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
+          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
+          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
+          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
+
+;document.getElementById("tweet-71357").innerHTML = tweet["html"];<p></p>
 <p>When a person studies economics for the first time, it is likely that they will not encounter “crazy” equations that go beyond basic mathematics. There is a lot of content to learn the various conceptual definitions such as price, supply, demand, costs, profit, etc., in addition to the various market structures.</p>
 <p>As you delve deeper into the subject, you realize there is more to it than just simplistic theories and newspaper chatter. So, what would be the best way to explain the concepts of price, quantity of product sold and production cost without referring to a single example without using mathematics?</p>
 <p>This <em>paper</em>:</p>
@@ -2725,11 +2863,57 @@ Scientists?”</span> October 29, 2018. <a href="https://doi.org/10.59350/ggmnk-
 <p>Although economics is technically recognized as a social science, students who embark on a “nebulous” adventure (undergraduate course) in this field receive (or should receive) a solid foundation in mathematics. Because determining how scarce resources can be reallocated requires a minimum understanding of mathematics, to calculate what the distribution cost will be and evaluate (quantitatively) among other measures. Thus, the field of economics is full of mathematical equations and applications.</p>
 <p>What is learned in teaching economics are mainly linear algebra, calculus and statistics. These are the basis for achieving the infamous econometrics. In algebra it is taught about total cost and total revenue. In calculus the objective is to find the derivatives of indifference and utility curves, profit maximization curves, cost minimization and growth models.</p>
 <p>In statistics, economists learn about predictive models and how to determine how likely a certain event is to occur. Econometrics, for some peculiar reasons, is called <em>“economentira”</em> for the use of models in which the final objective is to estimate and predict a certain variable.</p>
-<p></p><div id="tweet-73769"></div><script>tweet={"url":"https:\/\/twitter.com\/hcostax\/status\/1179532980265586688","author_name":"Henrique Costa","author_url":"https:\/\/twitter.com\/hcostax","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"pt\" dir=\"ltr\"\u003EProfessor de Econometria: \u003Cbr\u003Ey = a + ß.X ... + u\u003Cbr\u003E\u003Cbr\u003Eeu:\u003Cbr\u003E\u003Cbr\u003E━━━━━┒ \u003Cbr\u003E┓┏┓┏┓┃ \u003Cbr\u003E┛┗┛┗┛┃＼○／ - não entendi \u003Cbr\u003E┓┏┓┏┓┃   \/        vo me mata\u003Cbr\u003E┛┗┛┗┛┃ノ) \u003Cbr\u003E┓┏┓┏┓┃ \u003Cbr\u003E┛┗┛┗┛┃ \u003Cbr\u003E┓┏┓┏┓┃ \u003Cbr\u003E┛┗┛┗┛┃ \u003Cbr\u003E┓┏┓┏┓┃ \u003Cbr\u003E┃┃┃┃┃┃\u003C\/p\u003E&mdash; Henrique Costa (@hcostax) \u003Ca href=\"https:\/\/twitter.com\/hcostax\/status\/1179532980265586688?ref_src=twsrc%5Etfw\"\u003EOctober 2, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-73769").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-70527"></div><script>tweet=<!DOCTYPE html>
+<html lang="en" class="dog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X / ?</title>
+    <meta name="version" content="1">
+    <link href="https://abs.twimg.com/favicons/twitter.3.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-047ca1475a6efac7c9c89a9ff92b7a20.css">
+  </head>
+  <body dir="auto">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
+        <defs/>
+        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="content">
+        <a href="https://twitter.com" title="X logo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="x-logo"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+        </a>
+        <h1 id="header">Nothing to see here</h1>
+        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
+
+          <a id="button_search" href="/" class="button">Looking for this?</a>
+
+      </div>
+      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
+      <div class="footer">
+        <ul>
+          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
+          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
+          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
+          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
+          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
+          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
+          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
+          <li dir="ltr">&copy; X Corp. <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
+
+;document.getElementById("tweet-70527").innerHTML = tweet["html"];<p></p>
 <p>As you progress through related topics, you will find examples such as market demand curves (sum of several individual demand curves) or changes in the supply and price of a <em>commodity</em> or calculating the price elasticity of a commodity. consumption, each concept is validated using mathematics. Definitely, a mathematical and statistical approach is needed to have clarity when we arrive at the long-awaited “solution” to the problems proposed to professionals in this area.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./img/econometria.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A typical review for the basic econometrics final exam"><img src="https://hcostax.com/blog/maths_economics/img/econometria.jpg" class="img-fluid figure-img" alt="A typical review for the basic econometrics final exam"></a></p>
+<p><a href="./img/econometria.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A typical review for the basic econometrics final exam"><img src="https://henriqueqrm.netlify.app/blog/maths_economics/img/econometria.jpg" class="img-fluid figure-img" alt="A typical review for the basic econometrics final exam"></a></p>
 <figcaption>A typical review for the basic econometrics final exam</figcaption>
 </figure>
 </div>
@@ -2769,14 +2953,14 @@ September 21, 2018. <a href="https://doi.org/10.59350/tvp77-8gp37">https://doi.o
   <category>Economics</category>
   <category>Theory</category>
   <category>Mathematics</category>
-  <guid>https://hcostax.com/blog/maths_economics/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/maths_economics/</guid>
   <pubDate>Fri, 21 Sep 2018 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/maths_economics/feature.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/maths_economics/feature.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>The Ceteris Paribus Condition</title>
   <dc:creator>Henrique Costa</dc:creator>
-  <link>https://hcostax.com/blog/ceteris_paribus/</link>
+  <link>https://henriqueqrm.netlify.app/blog/ceteris_paribus/</link>
   <description><![CDATA[ 
 
 <!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
@@ -2789,7 +2973,7 @@ September 21, 2018. <a href="https://doi.org/10.59350/tvp77-8gp37">https://doi.o
 
 
 
-<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://hcostax.com/blog/ceteris_paribus/feature.jpg" class="img-fluid"></a></p>
+<p><a href="feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://henriqueqrm.netlify.app/blog/ceteris_paribus/feature.jpg" class="img-fluid"></a></p>
 <p>I will present here some personal reflections on a concept that is considered very simple and perhaps common in economics, but which is labeled as the height of ignorance for making an assumption that cannot be observed in reality, but which in my view is a mistake. mistake. The concept: <em>ceteris paribus</em>, or better said “the <em>ceteris paribus</em> condition”.</p>
 <p>Well, have you ever tried to imagine the meaning of <em>ceteris paribus?</em> The idea is somewhat simplistic, and means <strong>“everything else is constant”</strong> or <strong>“all other things remaining unchanged”</strong>. Nothing new on earth, because economists, students and enthusiasts know this condition well, and learn in the academic world that in economic analysis there is always this <em>ceteris paribus</em> thing.</p>
 <p>Examining a fact under the condition that an effect <strong>X</strong>, <em>ceteris paribus</em> had a cause <strong>Y</strong>, or better said, that a specific effect occurs from an isolated cause without other potential causes interfering or not have no involvement.</p>
@@ -2852,9 +3036,9 @@ September 16, 2018. <a href="https://doi.org/10.59350/jxf43-hc691">https://doi.o
 </div></div></section></div> ]]></description>
   <category>Economics</category>
   <category>Theory</category>
-  <guid>https://hcostax.com/blog/ceteris_paribus/</guid>
+  <guid>https://henriqueqrm.netlify.app/blog/ceteris_paribus/</guid>
   <pubDate>Sun, 16 Sep 2018 03:00:00 GMT</pubDate>
-  <media:content url="https://hcostax.com/blog/ceteris_paribus/feature.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://henriqueqrm.netlify.app/blog/ceteris_paribus/feature.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

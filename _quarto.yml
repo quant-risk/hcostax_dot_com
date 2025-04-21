@@ -19,7 +19,7 @@ website:
     tracking-id: "G-6C0FRWPTTF"
     anonymize-ip: true
   title: "Risk Taker!"
-  site-url: https://hcostax.com
+  site-url: https://henriqueqrm.netlify.app
   description: "Quant Risk Management (Finance)"
   favicon: assets/img/favicon/logo.png
   search: false
@@ -28,7 +28,7 @@ website:
   twitter-card: true
   comments:
     utterances:
-      repo: hcostax/hcostax_dot_com
+      repo: quant-risk/hcostax_dot_com
  
   navbar:
     logo: assets/img/favicon/logo.png
