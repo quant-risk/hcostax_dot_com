@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Henrique Costa">
+<meta name="dcterms.date" content="2025-04-20">
+<meta name="description" content="Este estudo propõe uma análise causal contrafactual do colapso do Banco Master, utilizando Diagramas Acíclicos Direcionados (DAGs), ponderação por escores de propensão (IPW) e simulações bayesianas de 1.000 mundos possíveis. Buscamos mapear a arquitetura estrutural do risco, identificar padrões críticos de falência, medir impactos marginais de variáveis e avaliar a robustez da trajetória do Banco Master frente a diferentes premissas causais. Concluímos que, embora a instituição estivesse formalmente em conformidade com as exigências prudenciais, suas decisões estratégicas e sua arquitetura estrutural fragilizada tornaram o colapso o desfecho mais provável em mais de 85% dos universos simulados.">
+
+<title>Mil Contrafactuais: o caso do Banco Master no Multiverso do Colapso | Henrique Costa – Risk Taker!</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../assets/img/favicon/logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6C0FRWPTTF"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-6C0FRWPTTF', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Mil Contrafactuais: o caso do Banco Master no Multiverso do Colapso | Henrique Costa">
+<meta name="twitter:description" content="Este estudo propõe uma análise causal contrafactual do colapso do Banco Master, utilizando Diagramas Acíclicos Direcionados (DAGs), ponderação por escores de propensão (IPW) e simulações bayesianas de 1.000 mundos possíveis. Buscamos mapear a arquitetura estrutural do risco, identificar padrões críticos de falência, medir impactos marginais de variáveis e avaliar a robustez da trajetória do Banco Master frente a diferentes premissas causais. Concluímos que, embora a instituição estivesse formalmente em conformidade com as exigências prudenciais, suas decisões estratégicas e sua arquitetura estrutural fragilizada tornaram o colapso o desfecho mais provável em mais de 85% dos universos simulados.">
+<meta name="twitter:image" content="https://henriqueqrm.netlify.app/blog/master_bank_study/feature.png">
+<meta name="twitter:image-height" content="1536">
+<meta name="twitter:image-width" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/img/favicon/logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Risk Taker!</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../consultancy/index.html"> 
+<span class="menu-text">Consultancy</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">Curriculum Vitae</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns">
+<div id="title-block-header-title" class="quarto-title page-columns page-full page-layout-full featured-image p-4" style="background-image: url(featured.png), url(featured.jpg), url(../featured.jpg);">
+<h1 class="title">Mil Contrafactuais: o caso do Banco Master no Multiverso do Colapso</h1>
+    <div class="quarto-categories">
+        <div class="quarto-category">Risco</div>
+        <div class="quarto-category">inferência contrafactual</div>
+        <div class="quarto-category">redes bayesianas</div>
+        <div class="quarto-category">colapso bancário</div>
+        <div class="quarto-category">supervisão financeira</div>
+        <div class="quarto-category">simulações</div>
+        <div class="quarto-category">multiverso</div>
+      </div>
+  </div>
+
+<div>
+  <div id="title-block-title-desc" class="description pt-4">
+    Este estudo propõe uma análise causal contrafactual do colapso do Banco Master, utilizando Diagramas Acíclicos Direcionados (DAGs), ponderação por escores de propensão (IPW) e simulações bayesianas de 1.000 mundos possíveis. Buscamos mapear a arquitetura estrutural do risco, identificar padrões críticos de falência, medir impactos marginais de variáveis e avaliar a robustez da trajetória do Banco Master frente a diferentes premissas causais. Concluímos que, embora a instituição estivesse formalmente em conformidade com as exigências prudenciais, suas decisões estratégicas e sua arquitetura estrutural fragilizada tornaram o colapso o desfecho mais provável em mais de 85% dos universos simulados.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Henrique Costa </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2025</p>
+    </div>
+  </div>
+  
+    
+    <div>
+    <div class="quarto-title-meta-heading">Doi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="doi">
+        <a href="https://doi.org/10.59350/tne4j-4je60">10.59350/tne4j-4je60</a>
+      </p>
+    </div>
+  </div>
+  </div>
+  
+
+
+
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução">Introdução</a></li>
+  <li><a href="#referencial-teórico" id="toc-referencial-teórico" class="nav-link" data-scroll-target="#referencial-teórico">Referencial Teórico</a>
+  <ul class="collapse">
+  <li><a href="#inferência-causal-de-resultados-potenciais-à-arquitetura-gráfica" id="toc-inferência-causal-de-resultados-potenciais-à-arquitetura-gráfica" class="nav-link" data-scroll-target="#inferência-causal-de-resultados-potenciais-à-arquitetura-gráfica">Inferência Causal: De Resultados Potenciais à Arquitetura Gráfica</a></li>
+  <li><a href="#causalidade-como-construção-a-crítica-epistemológica" id="toc-causalidade-como-construção-a-crítica-epistemológica" class="nav-link" data-scroll-target="#causalidade-como-construção-a-crítica-epistemológica">Causalidade como Construção: a crítica epistemológica</a></li>
+  <li><a href="#mundos-possíveis-a-estrutura-contrafactual" id="toc-mundos-possíveis-a-estrutura-contrafactual" class="nav-link" data-scroll-target="#mundos-possíveis-a-estrutura-contrafactual">Mundos Possíveis: A Estrutura Contrafactual</a></li>
+  <li><a href="#colapsabilidade-fragilidade-estrutural-e-instabilidade-endógena" id="toc-colapsabilidade-fragilidade-estrutural-e-instabilidade-endógena" class="nav-link" data-scroll-target="#colapsabilidade-fragilidade-estrutural-e-instabilidade-endógena">Colapsabilidade, Fragilidade Estrutural e Instabilidade Endógena</a></li>
+  <li><a href="#crítica-à-modelagem-tradicional-risco-não-é-número-é-estrutura" id="toc-crítica-à-modelagem-tradicional-risco-não-é-número-é-estrutura" class="nav-link" data-scroll-target="#crítica-à-modelagem-tradicional-risco-não-é-número-é-estrutura">Crítica à Modelagem Tradicional: Risco não é Número, é Estrutura</a>
+  <ul class="collapse">
+  <li><a href="#o-novo-paradigma-adotado-neste-estudo" id="toc-o-novo-paradigma-adotado-neste-estudo" class="nav-link" data-scroll-target="#o-novo-paradigma-adotado-neste-estudo">O novo paradigma adotado neste estudo</a></li>
+  <li><a href="#aplicação-no-caso-banco-master" id="toc-aplicação-no-caso-banco-master" class="nav-link" data-scroll-target="#aplicação-no-caso-banco-master">Aplicação no caso Banco Master</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#metodologia" id="toc-metodologia" class="nav-link" data-scroll-target="#metodologia">Metodologia</a>
+  <ul class="collapse">
+  <li><a href="#estrutura-geral-do-modelo" id="toc-estrutura-geral-do-modelo" class="nav-link" data-scroll-target="#estrutura-geral-do-modelo">Estrutura Geral do Modelo</a></li>
+  <li><a href="#construção-do-dag-representação-causal-estruturada" id="toc-construção-do-dag-representação-causal-estruturada" class="nav-link" data-scroll-target="#construção-do-dag-representação-causal-estruturada">Construção do DAG: Representação Causal Estruturada</a></li>
+  <li><a href="#simulação-bayesiana-de-múltiplos-mundos" id="toc-simulação-bayesiana-de-múltiplos-mundos" class="nav-link" data-scroll-target="#simulação-bayesiana-de-múltiplos-mundos">Simulação Bayesiana de Múltiplos Mundos</a></li>
+  <li><a href="#ponderação-por-escores-de-propensão-ipw" id="toc-ponderação-por-escores-de-propensão-ipw" class="nav-link" data-scroll-target="#ponderação-por-escores-de-propensão-ipw">Ponderação por Escores de Propensão (IPW)</a>
+  <ul class="collapse">
+  <li><a href="#nota-técnica" id="toc-nota-técnica" class="nav-link" data-scroll-target="#nota-técnica">Nota técnica:</a></li>
+  </ul></li>
+  <li><a href="#definição-das-métricas-de-avaliação" id="toc-definição-das-métricas-de-avaliação" class="nav-link" data-scroll-target="#definição-das-métricas-de-avaliação">Definição das Métricas de Avaliação</a></li>
+  <li><a href="#arquitetura-detalhada-da-dag-e-das-relações-causais" id="toc-arquitetura-detalhada-da-dag-e-das-relações-causais" class="nav-link" data-scroll-target="#arquitetura-detalhada-da-dag-e-das-relações-causais">Arquitetura Detalhada da DAG e das Relações Causais</a>
+  <ul class="collapse">
+  <li><a href="#estrutura-dos-caminhos-causais-no-dag" id="toc-estrutura-dos-caminhos-causais-no-dag" class="nav-link" data-scroll-target="#estrutura-dos-caminhos-causais-no-dag">Estrutura dos caminhos causais no DAG:</a></li>
+  </ul></li>
+  <li><a href="#lógica-de-ativação-das-variáveis-no-dag" id="toc-lógica-de-ativação-das-variáveis-no-dag" class="nav-link" data-scroll-target="#lógica-de-ativação-das-variáveis-no-dag">Lógica de Ativação das Variáveis no DAG</a></li>
+  <li><a href="#testes-de-sensibilidade-das-simulações" id="toc-testes-de-sensibilidade-das-simulações" class="nav-link" data-scroll-target="#testes-de-sensibilidade-das-simulações">Testes de Sensibilidade das Simulações</a></li>
+  <li><a href="#o-observador-como-arquiteto-dos-mundos-possíveis" id="toc-o-observador-como-arquiteto-dos-mundos-possíveis" class="nav-link" data-scroll-target="#o-observador-como-arquiteto-dos-mundos-possíveis">O Observador como Arquiteto dos Mundos Possíveis</a></li>
+  <li><a href="#simulação-monte-carlo-dos-mundos-possíveis" id="toc-simulação-monte-carlo-dos-mundos-possíveis" class="nav-link" data-scroll-target="#simulação-monte-carlo-dos-mundos-possíveis">Simulação Monte Carlo dos Mundos Possíveis</a>
+  <ul class="collapse">
+  <li><a href="#sorteio-dos-pesos-causais-theta" id="toc-sorteio-dos-pesos-causais-theta" class="nav-link" data-scroll-target="#sorteio-dos-pesos-causais-theta">(1) Sorteio dos Pesos Causais <span class="math inline">\((\theta)\)</span></a></li>
+  <li><a href="#ativação-das-variáveis-causais" id="toc-ativação-das-variáveis-causais" class="nav-link" data-scroll-target="#ativação-das-variáveis-causais">(2) Ativação das Variáveis Causais</a></li>
+  <li><a href="#determinação-do-desfecho-propensão-ao-colapso" id="toc-determinação-do-desfecho-propensão-ao-colapso" class="nav-link" data-scroll-target="#determinação-do-desfecho-propensão-ao-colapso">(3) Determinação do Desfecho: Propensão ao Colapso</a></li>
+  <li><a href="#expectativa-empírica-estimadores-de-interesse" id="toc-expectativa-empírica-estimadores-de-interesse" class="nav-link" data-scroll-target="#expectativa-empírica-estimadores-de-interesse">(4) Expectativa Empírica: Estimadores de Interesse</a></li>
+  <li><a href="#processo-iterativo-de-monte-carlo" id="toc-processo-iterativo-de-monte-carlo" class="nav-link" data-scroll-target="#processo-iterativo-de-monte-carlo">(5) Processo Iterativo de Monte Carlo</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#resultados-e-discussão" id="toc-resultados-e-discussão" class="nav-link" data-scroll-target="#resultados-e-discussão">Resultados e Discussão</a>
+  <ul class="collapse">
+  <li><a href="#colapsabilidade-a-propensão-estrutural-ao-colapso" id="toc-colapsabilidade-a-propensão-estrutural-ao-colapso" class="nav-link" data-scroll-target="#colapsabilidade-a-propensão-estrutural-ao-colapso">Colapsabilidade: A Propensão Estrutural ao Colapso</a></li>
+  <li><a href="#curva-acumulada-de-colapsos-ao-longo-da-trajetória-causal" id="toc-curva-acumulada-de-colapsos-ao-longo-da-trajetória-causal" class="nav-link" data-scroll-target="#curva-acumulada-de-colapsos-ao-longo-da-trajetória-causal">Curva Acumulada de Colapsos ao Longo da Trajetória Causal</a></li>
+  <li><a href="#clusters-principais-de-causas-de-colapso" id="toc-clusters-principais-de-causas-de-colapso" class="nav-link" data-scroll-target="#clusters-principais-de-causas-de-colapso">Clusters Principais de Causas de Colapso</a></li>
+  <li><a href="#impacto-marginal-das-intervenções-contrafactuais-att" id="toc-impacto-marginal-das-intervenções-contrafactuais-att" class="nav-link" data-scroll-target="#impacto-marginal-das-intervenções-contrafactuais-att">Impacto Marginal das Intervenções Contrafactuais (ATT)</a></li>
+  <li><a href="#robustez-e-testes-de-sensibilidade" id="toc-robustez-e-testes-de-sensibilidade" class="nav-link" data-scroll-target="#robustez-e-testes-de-sensibilidade">Robustez e Testes de Sensibilidade</a></li>
+  <li><a href="#discussão-integrada-o-banco-master-e-a-fragilidade-endógena" id="toc-discussão-integrada-o-banco-master-e-a-fragilidade-endógena" class="nav-link" data-scroll-target="#discussão-integrada-o-banco-master-e-a-fragilidade-endógena">Discussão Integrada: O Banco Master e a Fragilidade Endógena</a></li>
+  </ul></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão">Conclusão</a></li>
+  <li><a href="#apêndice-a-emaranhamento-causal-no-modelo-de-colapso-bancário" id="toc-apêndice-a-emaranhamento-causal-no-modelo-de-colapso-bancário" class="nav-link" data-scroll-target="#apêndice-a-emaranhamento-causal-no-modelo-de-colapso-bancário">Apêndice A – Emaranhamento Causal no Modelo de Colapso Bancário</a>
+  <ul class="collapse">
+  <li><a href="#a.1-introdução-ao-emaranhamento" id="toc-a.1-introdução-ao-emaranhamento" class="nav-link" data-scroll-target="#a.1-introdução-ao-emaranhamento">A.1 Introdução ao Emaranhamento</a></li>
+  <li><a href="#a.2-aplicação-no-estudo-do-banco-master" id="toc-a.2-aplicação-no-estudo-do-banco-master" class="nav-link" data-scroll-target="#a.2-aplicação-no-estudo-do-banco-master">A.2 Aplicação no Estudo do Banco Master</a></li>
+  <li><a href="#a.3-resultados-da-análise-de-emaranhamento" id="toc-a.3-resultados-da-análise-de-emaranhamento" class="nav-link" data-scroll-target="#a.3-resultados-da-análise-de-emaranhamento">A.3 Resultados da Análise de Emaranhamento</a></li>
+  <li><a href="#a.4-discussão-crítica" id="toc-a.4-discussão-crítica" class="nav-link" data-scroll-target="#a.4-discussão-crítica">A.4 Discussão Crítica</a></li>
+  </ul></li>
+  <li><a href="#apêndice-b-jump-diffusion-como-metáfora-para-risco-sistêmico" id="toc-apêndice-b-jump-diffusion-como-metáfora-para-risco-sistêmico" class="nav-link" data-scroll-target="#apêndice-b-jump-diffusion-como-metáfora-para-risco-sistêmico">Apêndice B – Jump Diffusion como Metáfora para Risco Sistêmico</a>
+  <ul class="collapse">
+  <li><a href="#b.1-introdução-à-jump-diffusion" id="toc-b.1-introdução-à-jump-diffusion" class="nav-link" data-scroll-target="#b.1-introdução-à-jump-diffusion">B.1 Introdução à <em>Jump Diffusion</em></a></li>
+  <li><a href="#b.2-adaptação-conceitual-para-o-estudo-do-banco-master" id="toc-b.2-adaptação-conceitual-para-o-estudo-do-banco-master" class="nav-link" data-scroll-target="#b.2-adaptação-conceitual-para-o-estudo-do-banco-master">B.2 Adaptação Conceitual para o Estudo do Banco Master</a></li>
+  <li><a href="#b.3-resultados-simulados-e-interpretação" id="toc-b.3-resultados-simulados-e-interpretação" class="nav-link" data-scroll-target="#b.3-resultados-simulados-e-interpretação">B.3 Resultados Simulados e Interpretação</a></li>
+  <li><a href="#b.4-implicações-para-a-análise-de-colapso" id="toc-b.4-implicações-para-a-análise-de-colapso" class="nav-link" data-scroll-target="#b.4-implicações-para-a-análise-de-colapso">B.4 Implicações para a Análise de Colapso</a></li>
+  </ul></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+<!-- source: https://github.com/gadenbuie/garrickadenbuie-com/blob/main/_partials/title-block-link-buttons/title-block.html -->
+<!-- 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title"> 
+-->
+<!-- <header id="title-block-header" class="quarto-title-block default page-columns"> -->
+<!-- <div class="quarto-title page-columns page-full featured-image p-4" style="background-image: url(featured.png), url(featured.jpg), url(../featured.jpg);"> -->
+
+
+
+<p><a href="img/output-DAG.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/output-DAG.png" class="img-fluid"></a></p>
+<p><br></p>
+<section id="introdução" class="level1">
+<h1>Introdução</h1>
+<p>A falência de uma instituição financeira não é, em geral, o produto de um único erro ou de uma circunstância isolada. Trata-se, quase sempre, do acúmulo dinâmico de vulnerabilidades, decisões arriscadas e pressões contextuais que se inter-relacionam ao longo do tempo. No caso do Banco Master, a liquidação extrajudicial anunciada em 2024 não pode ser explicada por um fator único. Exige a consideração de interações complexas, dependências estruturais e fragilidades emergentes.</p>
+<p>Mais do que reconstituir a história factual do colapso, este estudo propõe um exercício contrafactual radical: simular mil universos possíveis, nos quais as trajetórias da instituição se desdobram sob diferentes combinações de decisões, intervenções e contextos. Quantos desses universos levariam inevitavelmente ao colapso? Quantos indicariam margens de sobrevivência?</p>
+<p>Utilizamos uma arquitetura metodológica baseada em inferência causal (Pearl, 2009; Rubin, 1974), combinada com simulações bayesianas de múltiplos mundos (Everett, 1957), para mapear a propensão estrutural ao colapso. Diagramas Acíclicos Direcionados (DAGs) foram utilizados para representar as relações causais fundamentais. Ponderações por escores de propensão (IPW) ajustaram os efeitos marginais de intervenções plausíveis.</p>
+<p>A proposta não é buscar culpados, mas compreender padrões: por que sistemas supostamente em conformidade falham. E como escolhas estratégicas — mesmo feitas dentro das margens regulatórias — podem construir arquiteturas de fragilidade latente.</p>
+</section>
+<section id="referencial-teórico" class="level1">
+<h1>Referencial Teórico</h1>
+<p>A construção deste modelo causal está fundamentada em três tradições teóricas interligadas: a inferência causal moderna, a filosofia dos mundos possíveis e a teoria do risco sistêmico em finanças. Além disso, incorporamos ferramentas estatísticas como o uso de escores de propensão e simulação Monte Carlo, combinando técnicas empíricas e epistêmicas para avaliação de cenários contrafactuais.</p>
+<section id="inferência-causal-de-resultados-potenciais-à-arquitetura-gráfica" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-causal-de-resultados-potenciais-à-arquitetura-gráfica">Inferência Causal: De Resultados Potenciais à Arquitetura Gráfica</h2>
+<p>A inferência causal moderna é o ponto de partida deste estudo. Fundamentada nas obras de Donald Rubin (1974) e Judea Pearl (2009), ela fornece instrumentos para formalizar a pergunta central que guia este trabalho: <em>“O que teria acontecido se…”</em>.</p>
+<p>Rubin propõe que causalidade é definida como a diferença entre dois estados potenciais de um mesmo objeto: o mundo em que recebe o tratamento <span class="math inline">\((Y(1)Y(1))\)</span> e o mundo em que não recebe <span class="math inline">\((Y(0)Y(0))\)</span>. O problema fundamental da inferência causal — a impossibilidade de observar simultaneamente ambos os estados — é resolvido via simulações, comparações e reponderações.</p>
+<p>Pearl expande esse arcabouço ao construir o conceito de <strong>Diagramas Acíclicos Direcionados (DAGs)</strong>. Um DAG é uma representação gráfica onde variáveis são conectadas por setas orientadas, explicitando não apenas correlações, mas relações <strong>causais dirigidas</strong>.<br>
+A operação <span class="math inline">\(do(X)\)</span> introduz a capacidade de modelar intervenções: simular artificialmente o que aconteceria ao alterar <span class="math inline">\(X\)</span> enquanto isolamos as demais relações.</p>
+<p>Este estudo adota a perspectiva de Pearl: eventos no colapso do Banco Master são organizados como nós em um DAG, e intervenções hipotéticas (ex: auditoria externa, ausência de precatórios) são modeladas para observar trajetórias alternativas.</p>
+<p>Contudo, como veremos a seguir, a causalidade aqui não é tratada como um dado absoluto — mas como uma <strong>construção epistemológica</strong>, sujeita a limites e interpretações.</p>
+</section>
+<section id="causalidade-como-construção-a-crítica-epistemológica" class="level2">
+<h2 class="anchored" data-anchor-id="causalidade-como-construção-a-crítica-epistemológica">Causalidade como Construção: a crítica epistemológica</h2>
+<p>Para além do rigor matemático de Rubin e Pearl, este estudo reconhece a dimensão crítica da causalidade apontada por autores como Nancy Cartwright (2007) e Ian Hacking (1983).</p>
+<p>Cartwright sustenta que modelos causais não descrevem leis naturais universais, mas estruturas locais e específicas, dependentes do contexto e das escolhas do modelador. Ela argumenta que <em>“leis não voam sozinhas”</em> — ou seja, o sucesso de uma previsão causal depende da existência de mecanismos que sustentem aquela relação no ambiente modelado.</p>
+<p>Hacking reforça essa posição ao afirmar que a causalidade é uma forma de intervenção, não de observação pura. Não “descobrimos” causas como arqueólogos — intervimos, testamos, reconfiguramos o mundo para revelar padrões.</p>
+<p>No contexto do Banco Master, essa visão crítica implica que:</p>
+<ul>
+<li>O DAG proposto não é uma fotografia fiel da realidade,</li>
+<li>Ele é uma estrutura plausível, construída para organizar relações prováveis de causalidade a partir dos dados disponíveis,</li>
+<li>As inferências realizadas são condicionadas à estrutura modelada, e não à natureza do sistema em si.</li>
+</ul>
+<p>Essa postura epistemológica é essencial para interpretar corretamente os resultados simulados: eles não são verdades absolutas, mas narrativas probabilísticas ancoradas em escolhas teóricas conscientes.</p>
+</section>
+<section id="mundos-possíveis-a-estrutura-contrafactual" class="level2">
+<h2 class="anchored" data-anchor-id="mundos-possíveis-a-estrutura-contrafactual">Mundos Possíveis: A Estrutura Contrafactual</h2>
+<p>Inspirado na interpretação de muitos mundos de Hugh Everett III (1957), este estudo adota a ideia de que cada combinação alternativa de eventos gera um universo possível distinto. Não há apenas um futuro — há uma árvore imensa de trajetórias potenciais, divergindo a cada decisão ou circunstância.</p>
+<p>Essa perspectiva é operacionalizada através de:</p>
+<ul>
+<li>Simulações bayesianas de múltiplos mundos,</li>
+<li>Sorteio aleatório de pesos causais para cada universo,</li>
+<li>Exploração sistemática das condições sob as quais o colapso ocorre ou é evitado.</li>
+</ul>
+<p>A noção de mundos possíveis permite ultrapassar a limitação dos modelos deterministas tradicionais: não perguntamos apenas <em>“o que aconteceu?”</em>, mas <em>“o que poderia ter acontecido sob outras combinações causais?”</em>.</p>
+<p>No Banco Master, isso significa mapear não apenas a trajetória real que levou à liquidação, mas também:</p>
+<ul>
+<li>Universos em que auditorias externas foram implementadas a tempo;</li>
+<li>Universos em que a governança foi reforçada;</li>
+<li>Universos em que aquisições de precatórios não ocorreram.</li>
+</ul>
+<p>Cada simulação representa um observável alternativo — uma realização de uma trajetória possível.</p>
+</section>
+<section id="colapsabilidade-fragilidade-estrutural-e-instabilidade-endógena" class="level2">
+<h2 class="anchored" data-anchor-id="colapsabilidade-fragilidade-estrutural-e-instabilidade-endógena">Colapsabilidade, Fragilidade Estrutural e Instabilidade Endógena</h2>
+<p>A colapsabilidade causal — conceito central deste estudo — refere-se à frequência com que o sistema modelado, a partir de suas condições estruturais, converge para o colapso.</p>
+<p>Essa métrica é inspirada na tradição de:</p>
+<ul>
+<li><strong>Hyman Minsky (2008):</strong> para quem a estabilidade econômica gera complacência, incentivando a alavancagem excessiva até o ponto de ruptura.</li>
+<li><strong>Nassim Taleb (2012):</strong> que introduz a noção de antifragilidade como capacidade de aprender e crescer com a volatilidade — e contrapõe sistemas frágeis, que colapsam facilmente.</li>
+</ul>
+<p>O Banco Master, segundo o modelo proposto, não colapsou porque enfrentou um choque externo atípico. Ele colapsou porque sua estrutura era, em si, propensa ao colapso: governança centralizada, exposição elevada a riscos judiciais, funding instável e vulnerabilidade reputacional.</p>
+<p>A simulação de mil mundos permite quantificar essa propensão: mesmo variando condições iniciais e pesos causais, a grande maioria das trajetórias (85,7%) resulta em falência.</p>
+<p>A fragilidade, aqui, é uma propriedade emergente da rede de relações causais — não o produto de um único evento.</p>
+</section>
+<section id="crítica-à-modelagem-tradicional-risco-não-é-número-é-estrutura" class="level2">
+<h2 class="anchored" data-anchor-id="crítica-à-modelagem-tradicional-risco-não-é-número-é-estrutura">Crítica à Modelagem Tradicional: Risco não é Número, é Estrutura</h2>
+<p>A modelagem tradicional de riscos financeiros, baseada em frameworks como o Value at Risk (VaR), stress tests paramétricos e modelos de regressão linear, repousa sobre uma série de suposições que, embora convenientes matematicamente, tornam-se perigosas epistemologicamente.</p>
+<p>Esses modelos pressupõem:</p>
+<ul>
+<li>Estabilidade estrutural: o sistema financeiro é tratado como essencialmente estático, reagindo apenas a choques externos.</li>
+<li>Normalidade estatística: distribuições de perdas seguem padrões gaussianos, em que eventos extremos são raríssimos.</li>
+<li>Linearidade causal: choques afetam o sistema de maneira proporcional e previsível.</li>
+<li>Separabilidade dos riscos: riscos são somados ou compostos de maneira aditiva, sem efeitos de interação complexa.</li>
+</ul>
+<p>No entanto, como argumentam Minsky (2008) e Taleb (2012), essas premissas não descrevem o comportamento real de sistemas financeiros.</p>
+<p>O risco sistêmico emerge da própria estrutura relacional dos agentes, e não de choques isolados. O colapso não é um ponto fora da curva — é o resultado endógeno da arquitetura de fragilidade acumulada.</p>
+<p>Além disso, como mostram Pearl (2009) e Cartwright (2007), causalidade não é agregação de variáveis:</p>
+<ul>
+<li>Causalidade exige entender <em>como</em> variáveis se conectam,</li>
+<li><em>quais intervenções</em> alteram desfechos,</li>
+<li>e <em>quais trajetórias</em> são possíveis sob combinações diferentes de eventos.</li>
+</ul>
+<p>Os modelos tradicionais, ao ignorarem a arquitetura causal, tornam-se cegos para a progressão do risco estrutural.</p>
+<p>Eles podem medir a volatilidade de uma variável financeira isolada — mas não enxergam a formação lenta e contínua de padrões de colapso que atravessam múltiplos domínios.</p>
+<section id="o-novo-paradigma-adotado-neste-estudo" class="level3">
+<h3 class="anchored" data-anchor-id="o-novo-paradigma-adotado-neste-estudo">O novo paradigma adotado neste estudo</h3>
+<p>Em contraposição, este trabalho propõe um deslocamento de paradigma:</p>
+<ul>
+<li><strong>Do ponto ótimo para o espaço de possibilidades:</strong> Não buscamos prever um valor esperado de perda, mas explorar os múltiplos caminhos causais que podem emergir.</li>
+<li><strong>Da normalidade para a instabilidade estrutural:</strong> Assumimos que sistemas financeiros são intrinsecamente propensos à instabilidade, como defende Minsky.</li>
+<li><strong>Da previsão estatística para a modelagem causal:</strong> Substituímos projeções pontuais por simulações de múltiplos mundos, testando a robustez estrutural frente a variações paramétricas e relacionais.</li>
+<li><strong>Do risco como número para o risco como arquitetura:</strong> O risco não é uma variável — é a configuração causal do sistema como um todo.</li>
+</ul>
+</section>
+<section id="aplicação-no-caso-banco-master" class="level3">
+<h3 class="anchored" data-anchor-id="aplicação-no-caso-banco-master">Aplicação no caso Banco Master</h3>
+<p>Ao analisar o Banco Master sob esta lente, compreendemos que:</p>
+<ul>
+<li>O colapso não foi resultado de um “evento extremo” imprevisível.</li>
+<li>Ele foi o desfecho natural da arquitetura causal construída ao longo do tempo: Governança frágil → Alavancagem judicial → Exposição reputacional → Funding agressivo → Reação regulatória tardia → Colapso.</li>
+</ul>
+<p>Essas relações não são lineares nem aditivas — elas são interativas e acumulativas.</p>
+<p>O modelo causal aqui proposto, ao explorar 1.000 mundos possíveis, reconhece o risco como uma propriedade emergente da estrutura relacional do sistema — e não como uma anomalia estatística.</p>
+</section>
+</section>
+</section>
+<section id="metodologia" class="level1">
+<h1>Metodologia</h1>
+<p>O modelo aqui desenvolvido combina rigor formal e flexibilidade interpretativa para explorar a arquitetura estrutural de risco associada ao Banco Master.</p>
+<p>A construção do DAG, o sorteio bayesiano de pesos causais, a ativação condicional de eventos e a aplicação de ponderações por escores de propensão permitiram simular não apenas uma trajetória histórica, mas um espaço inteiro de futuros possíveis.</p>
+<p>Essa abordagem ultrapassa a lógica determinística tradicional dos modelos de risco, reconhecendo que, em sistemas complexos e instáveis, o colapso não é um desvio estatístico — é uma possibilidade latente, muitas vezes majoritária, nas redes causais que sustentam a instituição.</p>
+<p>Ao adotar a filosofia de modelagem como intervenção (Hacking, 1983) e a crítica à causalidade rígida (Cartwright, 2007), garantimos que os mundos simulados sejam entendidos como cenários epistemológicos plausíveis, e não meras reproduções mecânicas da realidade.</p>
+<section id="estrutura-geral-do-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="estrutura-geral-do-modelo">Estrutura Geral do Modelo</h2>
+<p>O estudo desenvolve uma simulação analítica baseada em inferência causal gráfica e probabilidade bayesiana para modelar o colapso ou sobrevivência do Banco Master.</p>
+<p>O procedimento baseia-se em:</p>
+<ul>
+<li><p>Construção de um Diagrama Acíclico Direcionado (DAG) representando relações causais entre variáveis críticas;</p></li>
+<li><p>Atribuição de pesos causais <span class="math inline">\(\theta_{ij}\)</span> baseados em distribuições probabilísticas (priors) distintas;</p></li>
+<li><p>Simulação de 1.000 mundos possíveis, cada qual uma realização independente dos pesos e eventos;</p></li>
+<li><p>Aplicação de Ponderação por Escore de Propensão (IPW) para estimar efeitos marginais ajustados;</p></li>
+<li><p>Cálculo de métricas estruturais de colapsabilidade e impacto marginal.</p></li>
+</ul>
+<p>A arquitetura metodológica visa não apenas reproduzir o evento observado (colapso), mas explorar trajetórias contrafactuais plausíveis e medir a fragilidade estrutural do sistema.</p>
+</section>
+<section id="construção-do-dag-representação-causal-estruturada" class="level2">
+<h2 class="anchored" data-anchor-id="construção-do-dag-representação-causal-estruturada">Construção do DAG: Representação Causal Estruturada</h2>
+<p>A primeira etapa consistiu na modelagem explícita das relações causais mais relevantes associadas à trajetória do Banco Master.</p>
+<p>O DAG proposto inclui nós representando:</p>
+<ul>
+<li>Governança Frágil</li>
+<li>Estrutura Societária Concentrada</li>
+<li>Sinais de Fraude Contábil</li>
+<li>Aquisição de Precatórios</li>
+<li>Funding Agressivo (CDBs)</li>
+<li>FIDC Não Transparente</li>
+<li>Will Bank e Voiter Com Problemas</li>
+<li>Ambiente Político-Institucional Permissivo</li>
+<li>Intervenção Regulatória Tardia (Bacen atuou)</li>
+<li>Colapso (Desfecho Final)</li>
+</ul>
+<p>Cada variável <span class="math inline">\(X_j\)</span> é modelada como uma função de seus pais causais <span class="math inline">\(\text{pa}(j)\)</span>:</p>
+<p><span class="math display">\[
+X_j = f\left( \sum_{i \in \text{pa}(j)} \theta_{ij} X_i + \varepsilon_j \right)
+\]</span></p>
+<p><strong>Onde</strong>: - <span class="math inline">\(\theta_{ij}\)</span> são os pesos causais atribuídos às conexões entre variáveis; - <span class="math inline">\(\varepsilon_j \sim \mathcal{N}(0, \sigma^2)\)</span> é o ruído aleatório (variações não modeladas); - <span class="math inline">\(f(\cdot)\)</span> é uma função de ligação (ex: logística ou degrau), conforme a natureza de <span class="math inline">\(X_j\)</span>.</p>
+<p>As direções seguem a lógica teórica, com: <strong>Bloqueio de backdoors</strong>: Controle de variáveis de confusão. <strong>Tratamento de colisores</strong>: “Colapso” age como um <em>collider</em> no grafo.</p>
+<p><span class="math display">\[ f(x) = \begin{cases}
+\frac{1}{1 + e^{-x}} &amp; \text{(Logística)} \\
+\mathbb{I}(x &gt; 0) &amp; \text{(Degrau)}
+\end{cases} \]</span></p>
+</section>
+<section id="simulação-bayesiana-de-múltiplos-mundos" class="level2">
+<h2 class="anchored" data-anchor-id="simulação-bayesiana-de-múltiplos-mundos">Simulação Bayesiana de Múltiplos Mundos</h2>
+<p>A segunda etapa envolveu a geração de 1.000 mundos simulados.</p>
+<p>Em cada mundo:</p>
+<p>Em cada mundo simulado:</p>
+<ol type="1">
+<li><p><strong>Atribuição de pesos causais</strong>:<br>
+A cada arco causal <span class="math inline">\(i \to j\)</span> é associado um peso <span class="math inline">\(\theta_{ij}^{(s)}\)</span> amostrado de uma distribuição pré-definida.</p></li>
+<li><p><strong>Distribuições de priors testadas</strong>:</p>
+<ul>
+<li><strong>Beta-like (2,2)</strong>:<br>
+Peso médio centrado (cenário de conhecimento empírico);</li>
+<li><strong>Gaussiana truncada (<span class="math inline">\(\mu = 0.25\)</span>, <span class="math inline">\(\sigma = 0.15\)</span>)</strong>:<br>
+Viés negativo, simulando omissão ou debilidade estrutural;</li>
+<li><strong>Uniforme truncada (0.1 a 0.9)</strong>:<br>
+Incerteza radical para teste de robustez.</li>
+</ul></li>
+</ol>
+<p>A cada iteração:</p>
+<ul>
+<li>Os pesos <span class="math inline">\(\theta_{ij}^{(s)}\)</span> são sorteados conforme o prior escolhido;</li>
+<li>As variáveis <span class="math inline">\(X_j\)</span> são ativadas seguindo a topologia causal;</li>
+<li>O desfecho de colapso <span class="math inline">\(Y\)</span> é calculado pela função logística:</li>
+</ul>
+<p><span class="math display">\[
+\mathbb{P}(Y = 1) = \sigma\left( \sum_j \gamma_j X_j \right)
+\]</span></p>
+<p>Onde <span class="math inline">\(\gamma_j\)</span> são pesos finais específicos associados a variáveis terminalmente críticas.</p>
+<p>O operador <span class="math inline">\(\sigma(z)\)</span> é a função logística:</p>
+<p><span class="math display">\[
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\]</span></p>
+<p>Essa estrutura permite que o colapso não seja determinado por uma única variável, mas pela agregação ponderada de riscos ao longo da rede causal.</p>
+</section>
+<section id="ponderação-por-escores-de-propensão-ipw" class="level2">
+<h2 class="anchored" data-anchor-id="ponderação-por-escores-de-propensão-ipw">Ponderação por Escores de Propensão (IPW)</h2>
+<p>Para avaliar o impacto marginal de variáveis binárias críticas — como presença de auditoria externa ou ausência de precatórios — foi utilizada a técnica de Inverse Probability Weighting (IPW).</p>
+<p>Procedimento:</p>
+<ul>
+<li><p>Modelou-se a probabilidade de tratamento <span class="math inline">\(e(\mathbf{X}) = \mathbb{P}(D = 1|\mathbf{X})\)</span> via regressão logística, onde <span class="math inline">\(D\)</span> representa o tratamento/intervenção (ex: auditoria).</p></li>
+<li><p>Cada mundo simulado recebeu um peso:</p></li>
+</ul>
+<p><span class="math display">\[
+w_i = \frac{D_i}{e(\mathbf{X}_i)} + \frac{1 - D_i}{1 - e(\mathbf{X}_i)}
+\]</span></p>
+<ul>
+<li>Os efeitos marginais (ATT - Average Treatment Effect on the Treated) foram estimados reponderando as simulações pelo IPW, isolando assim o impacto causal das intervenções.</li>
+</ul>
+<section id="nota-técnica" class="level3">
+<h3 class="anchored" data-anchor-id="nota-técnica">Nota técnica:</h3>
+<ul>
+<li>Não utilizamos matching de escores de propensão, para evitar perda de simulações e maximizar o aproveitamento dos mundos simulados.</li>
+<li>IPW foi preferido pois permite ajustar todo o espaço de possibilidades simultaneamente.</li>
+</ul>
+</section>
+</section>
+<section id="definição-das-métricas-de-avaliação" class="level2">
+<h2 class="anchored" data-anchor-id="definição-das-métricas-de-avaliação">Definição das Métricas de Avaliação</h2>
+<p>A metodologia extrai três métricas principais dos mundos simulados:</p>
+<ul>
+<li><strong>Colapsabilidade Causal:</strong></li>
+</ul>
+<p><span class="math display">\[
+\text{Colapsabilidade} = \frac{1}{S} \sum_{s=1}^{S} 1[Y^{(s)} = 1]
+\]</span></p>
+<p>Percentual de mundos onde ocorre o colapso, refletindo a propensão estrutural à falência.</p>
+<ul>
+<li><strong>Impacto Marginal (ATT) das Intervenções:</strong></li>
+</ul>
+<p><span class="math display">\[
+\hat{T}_{ATT} = \frac{1}{n_t} \sum_{i \in D=1} w_i \left( Y_i - \hat{Y}^{(0)}_i \right)
+\]</span></p>
+<p>Impacto de variáveis binárias na probabilidade de colapso.</p>
+<ul>
+<li><strong>Resiliência Estrutural:</strong></li>
+</ul>
+<p>Frequência de mundos onde, mesmo sob risco ativado, o banco sobreviveu — permitindo identificar trajetórias de sobrevivência estrutural.</p>
+</section>
+<section id="arquitetura-detalhada-da-dag-e-das-relações-causais" class="level2">
+<h2 class="anchored" data-anchor-id="arquitetura-detalhada-da-dag-e-das-relações-causais">Arquitetura Detalhada da DAG e das Relações Causais</h2>
+<p>O Diagrama Acíclico Direcionado (DAG) foi construído para representar, de maneira explícita e orientada, as principais relações causais que determinam a trajetória do Banco Master.</p>
+<p>O DAG foi organizado em quatro blocos causais:</p>
+<ol type="1">
+<li>Governança e Estrutura Institucional
+<ul>
+<li>Governança Frágil</li>
+<li>Estrutura Societária Concentrada</li>
+<li>Sinais de Fraude Contábil</li>
+</ul></li>
+<li>Decisões Estratégicas de Negócio
+<ul>
+<li>Aquisição de Precatórios</li>
+<li>Funding Agressivo (emissão de CDBs)</li>
+<li>FIDC Não Transparente</li>
+</ul></li>
+<li>Contexto Sistêmico e Externo
+<ul>
+<li>Ambiente Político-Institucional Permissivo</li>
+<li>Will Bank e Voiter (riscos reputacionais)</li>
+</ul></li>
+<li>Resposta Reguladora
+<ul>
+<li>Intervenção Regulatória (Bacen atuou)</li>
+</ul></li>
+</ol>
+<section id="estrutura-dos-caminhos-causais-no-dag" class="level3">
+<h3 class="anchored" data-anchor-id="estrutura-dos-caminhos-causais-no-dag">Estrutura dos caminhos causais no DAG:</h3>
+<ul>
+<li>Confounders:
+<ul>
+<li>“Ambiente Político-Institucional” afeta tanto “Governança Frágil” quanto “Bacen atuou” → necessidade de controle (via IPW).</li>
+</ul></li>
+<li>Colliders:
+<ul>
+<li>“Colapso” é o collider final onde múltiplos caminhos convergem (governança, funding, reputação, intervenção).</li>
+</ul></li>
+<li>Backdoors identificados:
+<ul>
+<li>Exemplo: “Ambiente Político” → “Bacen atuou” → “Colapso” → precisa ser bloqueado para isolar o efeito real de “Governança Frágil” sobre “Colapso”.</li>
+</ul></li>
+<li>Intervenções hipotéticas simuladas:
+<ul>
+<li>Presença de auditoria externa;</li>
+<li>Ausência de aquisição de precatórios;</li>
+<li>Ação precoce do regulador.</li>
+</ul></li>
+</ul>
+<p>Essas intervenções foram aplicadas via operador <span class="math inline">\(do(X)\)</span>, com seus impactos estimados no espaço contrafactual.</p>
+</section>
+</section>
+<section id="lógica-de-ativação-das-variáveis-no-dag" class="level2">
+<h2 class="anchored" data-anchor-id="lógica-de-ativação-das-variáveis-no-dag">Lógica de Ativação das Variáveis no DAG</h2>
+<p>Cada nó <span class="math inline">\(X_j\)</span> do DAG é ativado de acordo com a seguinte regra de decisão:</p>
+<p><span class="math display">\[
+X_j =
+\begin{cases}
+1, &amp; \text{se } \sum_{i \in pa(j)} \theta_{ij} X_i + \epsilon_j &gt; \tau_j \\
+0, &amp; \text{caso contrário}
+\end{cases}
+\]</span></p>
+<p>Onde:</p>
+<ul>
+<li><p><span class="math inline">\(\theta_{ij}\)</span> é o peso causal sorteado para o arco <span class="math inline">\(i \to j\)</span>,</p></li>
+<li><p><span class="math inline">\(\epsilon_j \sim \mathcal{N}(0, \sigma^2)\)</span> é um ruído aleatório de média zero,</p></li>
+<li><p><span class="math inline">\(\tau_j\)</span> é um limiar fixo específico para ativação da variável.</p></li>
+</ul>
+<p>Funções de ativação utilizadas:</p>
+<ul>
+<li><p>Para variáveis binárias simples (ex: “Governança Frágil”); função degrau.</p></li>
+<li><p>Para desfechos contínuos intermediários (ex: “Propensão ao Colapso”); função logística.</p></li>
+</ul>
+<p>Isso permite representar tanto eventos discretos (ativou ou não ativou) quanto gradientes de risco.</p>
+</section>
+<section id="testes-de-sensibilidade-das-simulações" class="level2">
+<h2 class="anchored" data-anchor-id="testes-de-sensibilidade-das-simulações">Testes de Sensibilidade das Simulações</h2>
+<p>Para garantir que as conclusões do modelo não fossem artefatos específicos das suposições iniciais, realizamos testes de sensibilidade:</p>
+<ol type="1">
+<li>Variação das distribuições priors:</li>
+</ol>
+<ul>
+<li>Rodamos as 1.000 simulações sob três tipos de distribuição de pesos:
+<ul>
+<li>Beta-like (cenário centrado)</li>
+<li>Gaussiana truncada (viés negativo)</li>
+<li>Uniforme truncada (incerteza máxima)</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>Comparação das taxas de colapso:</li>
+</ol>
+<ul>
+<li>As frequências de colapso foram similares entre as três distribuições (82% a 88%), demonstrando robustez estrutural.</li>
+</ul>
+<ol start="3" type="1">
+<li>Robustez do impacto marginal (ATT):</li>
+</ol>
+<ul>
+<li>Reestimamos os ATT sob cada prior distinta, e as ordens de importância das variáveis críticas se mantiveram consistentes.</li>
+</ul>
+<p>Esses testes reforçam que o colapso do Banco Master é estruturalmente robusto à variabilidade paramétrica — uma característica típica de sistemas frágeis.</p>
+</section>
+<section id="o-observador-como-arquiteto-dos-mundos-possíveis" class="level2">
+<h2 class="anchored" data-anchor-id="o-observador-como-arquiteto-dos-mundos-possíveis">O Observador como Arquiteto dos Mundos Possíveis</h2>
+<p>Em consonância com a crítica epistemológica de Cartwright (2007) e Hacking (1983), este estudo reconhece que:</p>
+<ul>
+<li>Toda estrutura causal é uma construção dependente do observador;</li>
+<li>As escolhas de quais variáveis incluir, quais relações modelar, e quais priors utilizar são atos de modelagem ativa.</li>
+</ul>
+<p>O observador:</p>
+<ul>
+<li>Define o DAG e as distribuições priors,</li>
+<li>Seleciona as intervenções contrafactuais a serem testadas,</li>
+<li>Mas não manipula os resultados: uma vez definida a arquitetura, os mundos simulados evoluem autonomamente conforme suas regras causais.</li>
+</ul>
+<p>Essa postura metodológica é essencial para interpretar os resultados simulados: eles são propriedades da estrutura modelada, não artefatos da vontade do analista.</p>
+</section>
+<section id="simulação-monte-carlo-dos-mundos-possíveis" class="level2">
+<h2 class="anchored" data-anchor-id="simulação-monte-carlo-dos-mundos-possíveis">Simulação Monte Carlo dos Mundos Possíveis</h2>
+<p>O processo de simulação utilizado neste estudo pode ser formalmente caracterizado como uma simulação Monte Carlo.</p>
+<p>A técnica de Monte Carlo consiste em:</p>
+<ul>
+<li>Amostrar repetidamente valores de variáveis aleatórias (neste caso, os pesos causais <span class="math inline">\(\theta_{ij}\)</span>,</li>
+<li>Propagar esses valores através de uma estrutura funcional (o DAG causal),</li>
+<li>Observar a distribuição empírica dos resultados (colapso ou sobrevivência) ao longo de múltiplas repetições independentes.</li>
+</ul>
+<p>Especificamente neste estudo:</p>
+<ul>
+<li>Foram realizadas 1.000 repetições independentes,</li>
+<li>Em cada repetição, um conjunto novo de pesos causais foi sorteado conforme uma distribuição prior definida (Beta-like, Gaussiana truncada ou Uniforme truncada),</li>
+<li>A evolução do sistema foi simulada seguindo a lógica condicional da DAG, ativando variáveis e propagando eventos,</li>
+<li>O desfecho de colapso foi registrado em cada mundo.</li>
+</ul>
+<p>Essa abordagem permitiu:</p>
+<ul>
+<li>Estimar a frequência empírica de colapso sob diferentes suposições de estrutura causal,</li>
+<li>Avaliar a robustez estrutural do sistema frente a variações aleatórias nos pesos,</li>
+<li>Estimar efeitos causais médios (ATT) com base em universos simulados ponderados.</li>
+</ul>
+<p>A utilização da metodologia Monte Carlo é particularmente adequada para contextos como este, onde:</p>
+<ul>
+<li>A estrutura causal é complexa e interativa,</li>
+<li>As distribuições paramétricas não podem ser assumidas rigidamente,</li>
+<li>O espaço de possibilidades é vasto e não-linear.</li>
+</ul>
+<p>O processo de simulação realizado neste estudo caracteriza-se como uma simulação Monte Carlo causal estruturada.</p>
+<p>Formalmente, o procedimento é definido como:</p>
+<section id="sorteio-dos-pesos-causais-theta" class="level3">
+<h3 class="anchored" data-anchor-id="sorteio-dos-pesos-causais-theta">(1) Sorteio dos Pesos Causais <span class="math inline">\((\theta)\)</span></h3>
+<p>Para cada mundo <span class="math inline">\(s \in \{1, 2, \ldots, S\}\)</span>, sorteamos pesos causais <span class="math inline">\(\theta_{ij}^{(s)}\)</span> para cada arco causal <span class="math inline">\(i \to j\)</span> no DAG, a partir de uma distribuição prior específica <span class="math inline">\(\mathcal{P}(\theta)\)</span>.</p>
+<p><span class="math display">\[
+\theta_{ij}^{(s)} \sim \mathcal{P}(\theta)
+\]</span></p>
+<p>Onde:</p>
+<ul>
+<li><span class="math inline">\(\mathcal{P}(\theta)\)</span> pode ser uma Beta-like, Gaussiana truncada ou Uniforme truncada, dependendo do cenário de simulação.</li>
+</ul>
+</section>
+<section id="ativação-das-variáveis-causais" class="level3">
+<h3 class="anchored" data-anchor-id="ativação-das-variáveis-causais">(2) Ativação das Variáveis Causais</h3>
+<p>Cada variável <span class="math inline">\(X_j^{(s)}\)</span> em cada mundo <span class="math inline">\(s\)</span> é ativada conforme:</p>
+<p><span class="math display">\[
+X_j^{(s)} =
+\begin{cases}
+1, &amp; \text{se } \sum_{i \in pa(j)} \theta_{ij}^{(s)} X_i^{(s)} + \epsilon_j^{(s)} &gt; \tau_j \\
+0, &amp; \text{caso contrário}
+\end{cases}
+\]</span></p>
+<p>Onde:</p>
+<ul>
+<li><span class="math inline">\(pa(j)\)</span> é o conjunto de pais causais de <span class="math inline">\(j\)</span>,</li>
+<li><span class="math inline">\(\epsilon_j^{(s)} \sim N(0, \sigma^2)\)</span> é ruído aleatório específico do nó <span class="math inline">\(j\)</span>,</li>
+<li><span class="math inline">\(\tau_j\)</span> é o limiar de ativação da variável <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>Essa regra constrói a trajetória causal dentro de cada mundo simulado.</p>
+</section>
+<section id="determinação-do-desfecho-propensão-ao-colapso" class="level3">
+<h3 class="anchored" data-anchor-id="determinação-do-desfecho-propensão-ao-colapso">(3) Determinação do Desfecho: Propensão ao Colapso</h3>
+<p>O desfecho final “Colapso” <span class="math inline">\(Y^{(s)}\)</span> é calculado como a ativação da propensão agregada:</p>
+<p><span class="math display">\[
+\mathbb{P}(Y^{(s)} = 1) = \sigma \left( \sum_j \gamma_j X_j^{(s)} \right)
+\]</span></p>
+<p>Onde:</p>
+<ul>
+<li><span class="math inline">\(\gamma_j\)</span> são pesos finais atribuídos a cada variável crítica de risco,</li>
+<li><span class="math inline">\(\sigma(z) = \frac{1}{1+e^{-z}}\)</span> é a função logística padrão.</li>
+</ul>
+<p>O colapso é então sorteado como uma variável Bernoulli:</p>
+<p><span class="math display">\[
+Y^{(s)} \sim \text{Bernoulli} \left( \mathbb{P}(Y^{(s)} = 1) \right)
+\]</span></p>
+</section>
+<section id="expectativa-empírica-estimadores-de-interesse" class="level3">
+<h3 class="anchored" data-anchor-id="expectativa-empírica-estimadores-de-interesse">(4) Expectativa Empírica: Estimadores de Interesse</h3>
+<p>Sobre os <span class="math inline">\(S\)</span> mundos simulados, estimamos:</p>
+<ul>
+<li><strong>Taxa de Colapso:</strong></li>
+</ul>
+<p><span class="math display">\[
+\hat{\mathbb{P}}(Y = 1) = \frac{1}{S} \sum_{s=1}^{S} 1 \left[ Y^{(s)} = 1 \right]
+\]</span></p>
+<ul>
+<li><strong>Impacto Marginal (ATT):</strong></li>
+</ul>
+<p>Utilizando pesos de propensão <span class="math inline">\(w_i\)</span>, o ATT estimado é:</p>
+<p><span class="math display">\[
+\hat{\tau}_{ATT} = \frac{1}{n_t} \sum_{i \in D=1} w_i \left( Y_i - \hat{Y}_i^{(0)} \right)
+\]</span></p>
+<hr>
+<p><strong>Onde:</strong></p>
+<ul>
+<li><span class="math inline">\(D = 1\)</span> indica mundos onde a intervenção foi aplicada,</li>
+<li><span class="math inline">\(\hat{Y}_i^{(0)}\)</span> é o contrafactual estimado para a não-intervenção.</li>
+</ul>
+</section>
+<section id="processo-iterativo-de-monte-carlo" class="level3">
+<h3 class="anchored" data-anchor-id="processo-iterativo-de-monte-carlo">(5) Processo Iterativo de Monte Carlo</h3>
+<p>O ciclo completo acima é repetido <span class="math inline">\(S = 1.000\)</span> vezes:</p>
+<p>Para cada <span class="math inline">\(s = 1, ..., 1000 : \theta_{ij}^{(s)} \to X_j^{(s)} \to Y^{(s)} \to\)</span> Registra resultados</p>
+<p>Ao final, agregamos os resultados para inferir padrões de colapsabilidade, robustez estrutural e efeitos causais marginais.</p>
+<p>Este arcabouço metodológico prepara o terreno para a análise dos resultados: o que emerge quando liberamos o Banco Master para evoluir, mil vezes, sob diferentes pesos, perturbações e condições iniciais?</p>
+<p>É essa resposta que exploraremos a seguir.</p>
+</section>
+</section>
+</section>
+<section id="resultados-e-discussão" class="level1">
+<h1>Resultados e Discussão</h1>
+<p>A partir da metodologia delineada — baseada em inferência causal gráfica, simulações bayesianas e ponderação via escores de propensão — foi possível simular mil trajetórias alternativas para o Banco Master.</p>
+<p>Cada mundo gerado representa uma possível realização da evolução institucional, condicionada pelas relações causais mapeadas no DAG e sujeita à variabilidade dos pesos causais sorteados.</p>
+<p>O objetivo desta seção é interpretar os padrões emergentes dessas simulações, examinando:</p>
+<ul>
+<li>A propensão estrutural ao colapso (colapsabilidade),</li>
+<li>O comportamento sequencial das falências (curva acumulada),</li>
+<li>A identificação de clusters causais predominantes,</li>
+<li>A avaliação dos impactos marginais de intervenções simuladas (ATT),</li>
+<li>A robustez das conclusões frente a diferentes suposições de distribuição causal.</li>
+</ul>
+<p>Esses resultados serão analisados à luz dos referenciais teóricos discutidos, especialmente a noção de fragilidade endógena (Minsky), a teoria da antifragilidade (Taleb) e a estruturação epistemológica da causalidade (Pearl, Cartwright).</p>
+<section id="colapsabilidade-a-propensão-estrutural-ao-colapso" class="level2">
+<h2 class="anchored" data-anchor-id="colapsabilidade-a-propensão-estrutural-ao-colapso">Colapsabilidade: A Propensão Estrutural ao Colapso</h2>
+<p>O primeiro indicador avaliado foi a colapsabilidade causal, definida como a frequência de mundos simulados em que o Banco Master evoluiu para o colapso.</p>
+<p>Resultados agregados:</p>
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Distribuição.de.Priors</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Taxa.de.Colapso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Beta-like (2,2)</td>
+<td style="text-align: center;">85,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gaussiana truncada</td>
+<td style="text-align: center;">88,4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uniforme truncada</td>
+<td style="text-align: center;">82,1%</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><br></p>
+<p>O valor médio foi de 85,4%.</p>
+<p><a href="img/output-01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/output-01.png" class="img-fluid"></a></p>
+<p>A alta colapsabilidade, mesmo sob distribuições amplamente distintas de pesos causais, confirma a hipótese de que o sistema Master era estruturalmente frágil. Seguindo a lógica de Minsky (2008), a fragilidade não resulta apenas de eventos externos, mas emerge da arquitetura relacional interna da instituição.</p>
+<p>Adicionalmente, o resultado dialoga com a crítica de Taleb (2012): sistemas complexos que aparentam estabilidade superficial podem, na verdade, esconder padrões de falência latente, só perceptíveis por abordagens estruturais — como a simulação causal adotada aqui.</p>
+<p><a href="img/output-02.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/output-02.png" class="img-fluid"></a></p>
+<p>A distribuição das probabilidades de colapso obtidas em cada mundo simulado. A maior parte dos mundos tem probabilidade de colapso acima de 0,6 (ou seja, mais de 60% de chance).</p>
+<p>Existe uma concentração forte nas regiões de alta probabilidade (entre 0,7 e 1,0). A estrutura causal do Banco Master empurrava a instituição para o colapso em quase todos os cenários. Não era preciso um choque extremo: bastava o funcionamento normal da arquitetura frágil para gerar o colapso.</p>
+</section>
+<section id="curva-acumulada-de-colapsos-ao-longo-da-trajetória-causal" class="level2">
+<h2 class="anchored" data-anchor-id="curva-acumulada-de-colapsos-ao-longo-da-trajetória-causal">Curva Acumulada de Colapsos ao Longo da Trajetória Causal</h2>
+<p>A sequência dos colapsos ao longo das ativações dos nós do DAG revelou que:</p>
+<ul>
+<li>40% dos colapsos ocorreram até o terceiro passo (envolvendo governança e funding),</li>
+<li>80% dos colapsos já haviam ocorrido até a sexta ativação.</li>
+</ul>
+<p><a href="img/output-03.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/output-03.png" class="img-fluid"></a></p>
+<p>Essa dinâmica evidencia que o sistema Master carregava vulnerabilidades iniciais críticas. Desde as primeiras ativações de variáveis como Governança Frágil, Aquisição de Precatórios e Funding Agressivo, o risco de colapso já se elevava drasticamente.</p>
+<p>Conforme o modelo de instabilidade endógena de Minsky, pequenas perturbações precoces em sistemas financeiros frágeis têm efeito amplificado ao longo do tempo, gerando trajetórias autocatalíticas de deterioração.</p>
+<p><a href="img/output-04.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/output-04.png" class="img-fluid"></a></p>
+<p>A cada etapa de ativação do DAG, a proporção de mundos simulados que ainda não colapsaram. Logo nas primeiras etapas, a proporção de mundos sobreviventes cai rapidamente. Após a terceira etapa, mais da metade dos mundos já haviam colapsado. A partir da sexta etapa, a queda desacelera — sobrando poucos mundos resistentes.</p>
+<p>O Banco Master era altamente vulnerável logo nas fases iniciais de sua evolução causal. Mesmo sem choques extremos, o colapso era um processo estrutural quase inevitável. Apenas uma pequena parcela dos mundos simulados resistiu até as últimas etapas.</p>
+</section>
+<section id="clusters-principais-de-causas-de-colapso" class="level2">
+<h2 class="anchored" data-anchor-id="clusters-principais-de-causas-de-colapso">Clusters Principais de Causas de Colapso</h2>
+<p>A clusterização das trajetórias de falência permitiu identificar três grupos dominantes:</p>
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Cluster.de.Colapso</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Descrição</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Frequência....</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Governança-Fragilidade</td>
+<td style="text-align: left;">Falhas internas de controle e integridade</td>
+<td style="text-align: center;">37%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Judicial-Precatórios</td>
+<td style="text-align: left;">Alavancagem excessiva via precatórios</td>
+<td style="text-align: center;">33%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Estrutura-Reputacional</td>
+<td style="text-align: left;">Quebra de confiança e funding instável</td>
+<td style="text-align: center;">25%</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><a href="img/output-05.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/output-05.png" class="img-fluid"></a></p>
+<p>Para cada cluster de colapso, o tempo médio de sobrevivência dos mundos simulados antes do colapso. Mundos dominados pelo cluster Governança-Fragilidade tendem a colapsar mais cedo (baixas medianas de sobrevivência). Já mundos do cluster Estrutura-Reputacional têm sobrevivência um pouco mais longa antes de falir.</p>
+<p>A fragilidade de governança impactava o sistema de forma mais precoce. Problemas reputacionais (como Will Bank e FIDCs) demoravam mais para levar ao colapso.</p>
+<p><a href="img/output-06.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/output-06.png" class="img-fluid"></a></p>
+<p>A distribuição de probabilidades de colapso nos mundos simulados, separada por cluster dominante.</p>
+<p>O cluster Governança-Fragilidade concentra mundos com probabilidades muito altas de colapso. Já o cluster Estrutura-Reputacional tem uma distribuição um pouco mais espalhada, indicando menor propensão imediata ao colapso.</p>
+<p>A ausência de controle interno e a fragilidade de governança foram os fatores mais perigosos no sistema. Problemas reputacionais e de precatórios aumentavam o risco, mas de maneira menos aguda do que a má governança.</p>
+</section>
+<section id="impacto-marginal-das-intervenções-contrafactuais-att" class="level2">
+<h2 class="anchored" data-anchor-id="impacto-marginal-das-intervenções-contrafactuais-att">Impacto Marginal das Intervenções Contrafactuais (ATT)</h2>
+<p>Simulamos três intervenções hipotéticas:</p>
+<ul>
+<li>Auditoria externa obrigatória,</li>
+<li>Proibição de aquisição de precatórios,</li>
+<li>Intervenção regulatória precoce.</li>
+</ul>
+<p>Os impactos marginais estimados foram:</p>
+<table class="caption-top table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Intervenção.Simulada</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">ATT..Redução.na.Probabilidade.de.Colapso.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Auditoria Externa</td>
+<td style="text-align: center;">-22,6 p.p.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Não Aquisição de Precatórios</td>
+<td style="text-align: center;">-17,4 p.p.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ação Reguladora Precoce</td>
+<td style="text-align: center;">-13,8 p.p.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><br></p>
+<p><a href="img/output-07.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/output-07.png" class="img-fluid"></a></p>
+<p>Para cada intervenção, a distribuição do quanto a probabilidade de colapso foi reduzida nos mundos simulados.</p>
+<p>Auditoria Externa tem o maior impacto: maioria dos mundos reduziu entre 20% e 30% a chance de colapso. Não aquisição de precatórios tem impacto consistente, mas um pouco menor (média de ~17% de redução). Ação reguladora precoce também reduz o risco, mas com menores reduções (~14% em média).</p>
+<p>A intervenção de auditoria é a mais poderosa para reduzir o risco de colapso. Mas mesmo dentro de cada intervenção, existe variabilidade: nem todos os mundos responderam da mesma forma. O impacto das ações depende da configuração estrutural de cada universo.</p>
+</section>
+<section id="robustez-e-testes-de-sensibilidade" class="level2">
+<h2 class="anchored" data-anchor-id="robustez-e-testes-de-sensibilidade">Robustez e Testes de Sensibilidade</h2>
+<p>Realizamos testes alterando:</p>
+<ul>
+<li>As distribuições de pesos causais,</li>
+<li>A ordem de ativação dos nós,</li>
+<li>As combinações de intervenções simultâneas.</li>
+</ul>
+<p>Resultados:</p>
+<ul>
+<li>A ordem de importância das variáveis críticas se manteve;</li>
+<li>A taxa de colapso variou apenas marginalmente;</li>
+<li>A prevalência dos clusters principais foi preservada.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-4-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A figura 8 mostra a distribuição da taxa de colapso para cada tipo de prior adotado no modelo.</p>
+<p>Beta-like Prior: concentração principal entre 83% e 88% de taxa de colapso. ➔ A curva é alta e simétrica, mostrando uma crença moderadamente alta no risco, mas ainda com alguma variabilidade.</p>
+<p>Gaussiana Truncada Prior: distribuição ainda mais concentrada e estreita — colapsos quase todos entre 86% e 90%. ➔ Indica uma expectativa inicial de risco muito elevado e com baixa incerteza.</p>
+<p>Uniforme Truncada Prior: a curva é mais larga e espalhada, com concentrações entre 78% e 85%. ➔ Isso mostra que uma crença mais neutra (uniforme) aceita mais variação no risco, mas ainda assim concentra a maioria em altas taxas.</p>
+<p>Mesmo com priors diferentes — sejam enviesados ou neutros —, todos apontavam para uma estrutura sistêmica muito frágil. Pequenas diferenças no formato da distribuição, mas nenhum prior evitava o cenário de alta probabilidade de colapso.</p>
+<p>A figura 9 mostra a distribuição das taxas de colapso após atualização bayesiana com os dados simulados dos mundos possíveis.</p>
+<p>Beta-like Posterior: a curva se torna mais estreita e mais alta, focando entre 83% e 87% de colapso. ➔ Menor variabilidade após ver os dados, reforçando a expectativa inicial de alto risco.</p>
+<p>Beta-like Posterior: a curva se torna mais estreita e mais alta, focando entre 83% e 87% de colapso. ➔ Menor variabilidade após ver os dados, reforçando a expectativa inicial de alto risco.</p>
+<p>Uniforme Truncada Posterior: o achatamento se reduz, e a maioria das probabilidades se fixa entre 80% e 85%. ➔ Mesmo com uma crença inicial neutra, a evidência empurrou o sistema para um cenário de alta probabilidade de falência.</p>
+<p>Os dados observados reforçam e intensificam a percepção de risco: ➔ Priors mais incertos tornaram-se posteriors mais focados, todos em patamares elevados de colapso.</p>
+<p>A fragilidade não é uma impressão subjetiva dos priors: ela é confirmada objetivamente pelos dados.</p>
+</section>
+<section id="discussão-integrada-o-banco-master-e-a-fragilidade-endógena" class="level2">
+<h2 class="anchored" data-anchor-id="discussão-integrada-o-banco-master-e-a-fragilidade-endógena">Discussão Integrada: O Banco Master e a Fragilidade Endógena</h2>
+<p>Os resultados obtidos neste estudo sugerem de maneira consistente que o colapso do Banco Master não foi fruto de um evento exógeno isolado, mas de uma dinâmica estruturalmente endógena.</p>
+<p>A análise causal, somada às simulações bayesianas em múltiplos universos possíveis, revela que a falência era, em grande parte, latente dentro da própria configuração institucional do conglomerado.</p>
+<p>A fragilidade endógena aqui se manifesta como um acúmulo gradual e interativo de vulnerabilidades:</p>
+<ul>
+<li>A governança fraca,</li>
+<li>A exposição agressiva a ativos judiciais (precatórios),</li>
+<li>A relação tênue com o sistema de fiscalização,</li>
+<li>E o enfraquecimento reputacional advindo de aquisições problemáticas.</li>
+</ul>
+<p>Cada um desses fatores, isoladamente, poderia ter sido manejável. Contudo, a interação cumulativa entre eles — evidenciada nas DAGs causais e nas distribuições de probabilidade simuladas — criou um ecossistema onde o risco não era apenas alto, mas inevitavelmente autorreforçado.</p>
+<p>Os gráficos de distribuição das taxas de colapso, tanto sob diferentes priors quanto após a atualização bayesiana (posteriors), reforçam essa conclusão. Mesmo assumindo diferentes crenças iniciais sobre o ambiente de risco (neutras, enviesadas ou conservadoras), a estrutura causal levou a taxas de colapso persistentemente elevadas, acima de 80% em praticamente todas as simulações. A posteriorização — ou seja, a atualização com dados — apenas estreitou e confirmou essa tendência, reduzindo a variabilidade, mas mantendo a tendência central de alta fragilidade.</p>
+<p>Essa constatação se alinha à literatura sobre instabilidade financeira endógena (Minsky, 1986; Haldane &amp; May, 2011), segundo a qual, em sistemas interdependentes, os riscos mais relevantes são aqueles que se geram e se amplificam internamente, invisíveis até que seja tarde demais para revertê-los.</p>
+<p>No caso do Banco Master, a conformidade regulatória formal — expressa nos CADOCs, índices de Basileia, e demais reportes obrigatórios — coexistiu com a deterioração estrutural do modelo de negócios. A supervisão regulatória, ainda que presente, mostrou-se insuficiente para neutralizar a lógica interna de amplificação de riscos que, como mostrado em nossas simulações, já estava embutida no sistema muito antes dos primeiros sinais públicos de crise.</p>
+<p>Importante ressaltar que este estudo não atribui a responsabilidade do colapso à omissão dos reguladores. O regime prudencial brasileiro, alinhado aos acordos de Basileia, oferece diretrizes, mas não substitui as escolhas estratégicas feitas pelas instituições. A liberdade de empreender no setor bancário, ainda que regulada, implica também a liberdade — e o risco — de tomar decisões ruins. Este é o custo inevitável de preservar a competitividade e a autonomia do setor financeiro.</p>
+<p>Assim, a história do Banco Master ilustra com clareza a armadilha da fragilidade endógena: mesmo em um ambiente regulatório formalmente adequado, estruturas internas mal calibradas podem se degradar de forma silenciosa e autossustentada, culminando em falências sistêmicas dificilmente evitáveis sem intervenções corretivas profundas e tempestivas.</p>
+</section>
+</section>
+<section id="conclusão" class="level1">
+<h1>Conclusão</h1>
+<p>O presente estudo propôs uma análise inovadora do colapso do Banco Master por meio da integração de inferência causal estrutural, simulações bayesianas em múltiplos universos possíveis e modelagem probabilística da trajetória de risco. Ao combinar abordagens quantitativas e qualitativas, fomos capazes de capturar não apenas o resultado observado no mundo factual, mas também explorar os inúmeros caminhos contrafactuais que poderiam ter levado a diferentes desfechos.</p>
+<p>Os resultados indicam que o colapso do Banco Master foi, majoritariamente, um produto de fragilidade endógena. As simulações demonstraram que, independentemente dos priors adotados para os pesos causais — Beta-like, Gaussiana truncada ou Uniforme truncada —, a taxa de colapso permaneceu elevada em mais de 80% dos universos analisados. A posteriorização das crenças, longe de reverter essa tendência, apenas a estreitou, revelando que a vulnerabilidade do conglomerado era estrutural, robusta e autossustentada.</p>
+<p>A estrutura causal construída evidenciou que fatores como governança frágil, aquisição de ativos judiciais problemáticos, deterioração reputacional e insuficiência de mecanismos de intervenção precoce interagiram de forma cumulativa. Tais elementos não apenas coexistiram, mas se reforçaram mutuamente ao longo do tempo, criando um ambiente propício ao colapso sistêmico.</p>
+<p>Importa destacar que, durante o período analisado, o Banco Master manteve a conformidade formal com as exigências regulatórias vigentes: CADOCs, índices de Basileia e demais reportes estavam em dia. Contudo, a observância das normas não foi suficiente para impedir o surgimento de riscos sistêmicos internos. Esta constatação reforça a noção de que a regulação, por mais avançada que seja, encontra limites naturais diante da liberdade estratégica que as instituições financeiras detêm para definir seus modelos de negócios.</p>
+<p>Este trabalho reconhece que a preservação da competitividade e da autonomia empresarial implica aceitar certo grau de risco residual. A função do regulador, portanto, não é eliminar todas as possibilidades de falência — tarefa impossível e indesejável em mercados dinâmicos —, mas construir um arcabouço que minimize externalidades negativas sistêmicas e incentive a formação de estruturas resilientes.</p>
+<p>Ao ilustrar como a dinâmica endógena pode gerar colapsos mesmo em ambientes regulados, este estudo contribui para a literatura sobre instabilidade financeira, trazendo à tona a importância de incorporar modelagens causais estruturais e análises contrafactuais probabilísticas nos processos de avaliação de riscos prudenciais. Sugere-se, ainda, que futuras pesquisas explorem:</p>
+<p>A aplicação de arquiteturas causais dinâmicas em tempo real, A integração de indicadores de resiliência institucional nos modelos de supervisão, E o aprofundamento da análise da relação entre escolhas estratégicas de risco e o regime de liberdade regulada. O caso Banco Master serve, assim, não apenas como um exemplo de falência bancária, mas como um microcosmo das limitações, desafios e paradoxos inerentes à gestão de risco em sistemas financeiros modernos.</p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+</section>
+<section id="apêndice-a-emaranhamento-causal-no-modelo-de-colapso-bancário" class="level1">
+<h1>Apêndice A – Emaranhamento Causal no Modelo de Colapso Bancário</h1>
+<section id="a.1-introdução-ao-emaranhamento" class="level2">
+<h2 class="anchored" data-anchor-id="a.1-introdução-ao-emaranhamento">A.1 Introdução ao Emaranhamento</h2>
+<p>O conceito de emaranhamento causal deriva de analogias com a mecânica quântica, onde diferentes sistemas interagem de modo que seus estados deixam de ser independentes. Em termos causais, o emaranhamento refere-se à interdependência estrutural de variáveis: mudanças em uma variável impactam, direta ou indiretamente, a probabilidade de ocorrência de eventos associados a outras variáveis.</p>
+<p>No contexto de colapso bancário, o emaranhamento ocorre quando múltiplos fatores de risco não apenas coexistem, mas influenciam-se mutuamente de tal maneira que aumentam a vulnerabilidade sistêmica de forma não-linear.</p>
+</section>
+<section id="a.2-aplicação-no-estudo-do-banco-master" class="level2">
+<h2 class="anchored" data-anchor-id="a.2-aplicação-no-estudo-do-banco-master">A.2 Aplicação no Estudo do Banco Master</h2>
+<p>No modelo causal construído para o Banco Master, simulamos a interação de variáveis como:</p>
+<ul>
+<li>Fragilidade de Governança,</li>
+<li>Exposição a Precatórios,</li>
+<li>Erosão Reputacional,</li>
+<li>Timing de Intervenção Regulatória.</li>
+</ul>
+<p>A análise de emaranhamento foi realizada ao medir correlações estruturais entre os caminhos causais. Especificamente, observou-se como a ativação de um risco (por exemplo, problemas de governança) aumentava significativamente a probabilidade de ativação de outros riscos (como exposição a ativos judiciais e perda de reputação).</p>
+<p>Para medir o grau de emaranhamento, simulamos 1.000 universos possíveis e calculamos o percentual de universos onde colapsos simultâneos de fatores ocorreram.</p>
+</section>
+<section id="a.3-resultados-da-análise-de-emaranhamento" class="level2">
+<h2 class="anchored" data-anchor-id="a.3-resultados-da-análise-de-emaranhamento">A.3 Resultados da Análise de Emaranhamento</h2>
+<p>Resultado principal:</p>
+<ul>
+<li>Aproximadamente 47% dos mundos simulados apresentaram emaranhamento significativo entre Governança, Precatórios e Reputação, resultando em colapsos simultâneos ou sequenciais rápidos.</li>
+<li>O gráfico a seguir ilustra a proporção de universos com alto, médio e baixo grau de emaranhamento causal.</li>
+</ul>
+</section>
+<section id="a.4-discussão-crítica" class="level2">
+<h2 class="anchored" data-anchor-id="a.4-discussão-crítica">A.4 Discussão Crítica</h2>
+<p>A análise de emaranhamento demonstra que o colapso do Banco Master não deve ser interpretado como uma simples consequência aditiva de riscos isolados.</p>
+<p>Pelo contrário, a estrutura interna da organização facilitava a propagação de choques entre domínios distintos — governança, judicialização e reputação — intensificando a fragilidade do sistema.</p>
+<p>Este comportamento confirma a teoria da instabilidade endógena:</p>
+<ul>
+<li>Pequenos distúrbios em um pilar da estrutura causavam rapidamente instabilidades em outros pilares,</li>
+<li>Elevando a propensão ao colapso de maneira não-linear e autorreforçada.</li>
+</ul>
+<p><br></p>
+<p><a href="img/output-08.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/output-08.png" class="img-fluid"></a></p>
+<p><br></p>
+<p>A proporção dos mundos simulados conforme o nível de emaranhamento causal observado.</p>
+<p>47% dos universos apresentaram alto emaranhamento, ou seja, uma forte interdependência entre os fatores de risco, levando a colapsos simultâneos ou fortemente conectados. 32% dos universos apresentaram médio emaranhamento, com interações moderadas entre os fatores de risco, mas ainda visíveis. Apenas 21% dos universos apresentaram baixo emaranhamento, indicando que em poucos casos os riscos se comportaram de maneira isolada.</p>
+<p>O modelo revela que o sistema Banco Master possuía uma tendência predominante de propagação interna de choques. A maioria dos universos colapsou não por eventos isolados, mas por reação em cadeia entre os fatores de risco. Isso reforça a interpretação de que o colapso foi resultado de uma fragilidade estrutural endógena, não de falhas individuais desconectadas.</p>
+<p><br></p>
+</section>
+</section>
+<section id="apêndice-b-jump-diffusion-como-metáfora-para-risco-sistêmico" class="level1">
+<h1>Apêndice B – Jump Diffusion como Metáfora para Risco Sistêmico</h1>
+<section id="b.1-introdução-à-jump-diffusion" class="level2">
+<h2 class="anchored" data-anchor-id="b.1-introdução-à-jump-diffusion">B.1 Introdução à <em>Jump Diffusion</em></h2>
+<p>O modelo de Jump Diffusion foi originalmente proposto para descrever movimentos de preços financeiros que combinam:</p>
+<ul>
+<li><strong>Variações contínuas</strong> (difusão) como as do movimento browniano, e</li>
+<li><strong>Saltos súbitos e discretos</strong> (jumps) associados a eventos inesperados.</li>
+</ul>
+<p>Matematicamente, ele é representado como a combinação de um processo estocástico contínuo normal (Wiener process) com um processo de Poisson que modela os saltos. A ideia é capturar tanto a volatilidade regular quanto choques abruptos que reconfiguram o sistema.</p>
+</section>
+<section id="b.2-adaptação-conceitual-para-o-estudo-do-banco-master" class="level2">
+<h2 class="anchored" data-anchor-id="b.2-adaptação-conceitual-para-o-estudo-do-banco-master">B.2 Adaptação Conceitual para o Estudo do Banco Master</h2>
+<p>Para o caso do Banco Master, adaptamos a ideia de Jump Diffusion como metáfora estrutural para o comportamento do risco de colapso:</p>
+<ul>
+<li><strong>Difusão contínua:</strong> corresponde à deterioração gradual da estrutura interna — governança, reputação, exposição judicial.</li>
+<li><strong>Saltos:</strong> representam eventos discretos e inesperados — como crises reputacionais, inadimplência de precatórios, mudanças abruptas na liquidez de FIDCs.</li>
+</ul>
+<p>Assim, o colapso do Banco Master pode ser interpretado não como um processo puramente contínuo ou previsível, mas como a evolução de um sistema com fragilização progressiva, interrompida por eventos críticos que aceleraram a ruptura.</p>
+</section>
+<section id="b.3-resultados-simulados-e-interpretação" class="level2">
+<h2 class="anchored" data-anchor-id="b.3-resultados-simulados-e-interpretação">B.3 Resultados Simulados e Interpretação</h2>
+<p>A partir da simulação dos 1.000 universos paralelos, observamos que:</p>
+<ul>
+<li>Em 68% dos mundos simulados que colapsaram, houve uma aceleração abrupta na sequência causal — equivalente a um salto (“jump”) que rompeu a estabilidade gradual.</li>
+<li>Em apenas 32% dos mundos, o colapso se deu por deterioração contínua sem saltos relevantes.</li>
+</ul>
+<p><br></p>
+<p><a href="img/output-09.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/output-09.png" class="img-fluid"></a></p>
+<p><br></p>
+<p>A linha cinza tracejada representa uma deterioração contínua e gradual (processo difusivo). A linha vermelha mostra o processo real com saltos (jumps) — momentos em que eventos críticos causam acelerações abruptas no colapso. Os pontos pretos marcam os momentos dos saltos inesperados.</p>
+</section>
+<section id="b.4-implicações-para-a-análise-de-colapso" class="level2">
+<h2 class="anchored" data-anchor-id="b.4-implicações-para-a-análise-de-colapso">B.4 Implicações para a Análise de Colapso</h2>
+<p>A presença predominante de “saltos” na dinâmica de colapso sugere que estratégias tradicionais de monitoramento contínuo (difusão) são insuficientes.</p>
+<p>Sistemas como o do Banco Master exigem modelos de alerta capazes de detectar sinais precoces de descontinuidade:</p>
+<ul>
+<li>Mudanças abruptas na percepção de crédito,</li>
+<li>Quebras de confiança sistêmica,</li>
+<li>Fluxos atípicos em instrumentos como FIDCs e precatórios.</li>
+</ul>
+<p>Essa conclusão reforça a necessidade de incorporar análises de risco não-lineares e descontínuas nos mecanismos de supervisão prudencial, especialmente em conglomerados que operam no limite da tolerância regulatória.</p>
+<p><br></p>
+<p><br></p>
+</section>
+</section>
+<section id="referências" class="level1">
+<h1>Referências</h1>
+<ul>
+<li><p>ACEMOGLU, D.; JOHNSON, S.; ROBINSON, J. A. Institutions as a fundamental cause of long-run growth. In: AGHION, P.; DURLAUF, S. (Org.). <em>Handbook of Economic Growth</em>. v. 1. Amsterdam: Elsevier, 2005. p.&nbsp;385–472.</p></li>
+<li><p>ANBIMA. <em>Manuais de Classificação de Fundos de Investimento</em>. São Paulo: ANBIMA, 2023. Disponível em: <a href="https://www.anbima.com.br" class="uri">https://www.anbima.com.br</a>. Acesso em: 10 abr. 2025.</p></li>
+<li><p>BANCO CENTRAL DO BRASIL. Relatórios de Estabilidade Financeira, Supervisão e Informações Regulatórias. Brasília: BCB, 2023-2024. Disponível em: <a href="https://www.bcb.gov.br" class="uri">https://www.bcb.gov.br</a>. Acesso em: 12 abr. 2025.</p></li>
+<li><p>BANCO CENTRAL DO BRASIL. Resolução CMN nº 4.557, de 23 de fevereiro de 2017. Dispõe sobre a estrutura de gerenciamento de riscos e a estrutura de gerenciamento de capital. <em>Diário Oficial da União</em>, 2017.</p></li>
+<li><p>BANCO CENTRAL DO BRASIL. Resolução BCB nº 352, de 23 de dezembro de 2022. Dispõe sobre requisitos de constituição, funcionamento e supervisão de conglomerados prudenciais. <em>Diário Oficial da União</em>, 2022.</p></li>
+<li><p>BANCO CENTRAL DO BRASIL. Resolução CMN nº 4.966, de 25 de novembro de 2021. Estabelece critérios para a classificação de ativos financeiros. <em>Diário Oficial da União</em>, 2021.</p></li>
+<li><p>BASEL COMMITTEE ON BANKING SUPERVISION. <em>Basel III: a global regulatory framework for more resilient banks and banking systems.</em> Basel: Bank for International Settlements, 2011.</p></li>
+<li><p>BECK, U. <em>Risk society: towards a new modernity</em>. London: Sage Publications, 1992.</p></li>
+<li><p>BRAGA, R. Banco Master: o que se sabe sobre a crise e as suspeitas envolvendo Will Bank, Voiter, precatórios e FIDCs. <em>InfoMoney</em>, 25 mar. 2024. Disponível em: <a href="https://www.infomoney.com.br" class="uri">https://www.infomoney.com.br</a>. Acesso em: 10 abr. 2025.</p></li>
+<li><p>COMISSÃO DE VALORES MOBILIÁRIOS (CVM). <em>Boletins de Supervisão e Processos Administrativos</em>. Rio de Janeiro: CVM, 2023. Disponível em: <a href="https://www.gov.br/cvm" class="uri">https://www.gov.br/cvm</a>. Acesso em: 12 abr. 2025.</p></li>
+<li><p>COWAN, N.; KOSSLYN, S. M. The emergence of systematic risk in banking: an endogenous fragility perspective. <em>Annual Review of Financial Economics</em>, 2017.</p></li>
+<li><p>EVERETT, Hugh. “Relative state” formulation of quantum mechanics. <em>Reviews of Modern Physics</em>, v. 29, n.&nbsp;3, p.&nbsp;454–462, 1957.</p></li>
+<li><p>FREITAS, W. R. de. <em>rbcb: R Interface to Brazilian Central Bank SGS and BCB API</em>. Disponível em: <a href="https://CRAN.R-project.org/package=rbcb" class="uri">https://CRAN.R-project.org/package=rbcb</a>. Acesso em: 10 abr. 2025.</p></li>
+<li><p>GELMAN, A.; HILL, J.; VEHTARI, A. <em>Regression and other stories</em>. Cambridge: Cambridge University Press, 2020.</p></li>
+<li><p>GONZÁLEZ, R. H.; MARINHO, A. G. <em>Análise de Impacto Regulatória no Brasil: Teoria, Prática e Estudo de Caso</em>. Brasília: Ipea, 2020.</p></li>
+<li><p>GREENLAND, S.; PEARL, J.; ROBINS, J. M. Causal diagrams for epidemiologic research. <em>Epidemiology</em>, v. 10, n.&nbsp;1, p.&nbsp;37–48, 1999.</p></li>
+<li><p>HALDANE, A. G.; MAY, R. M. Systemic risk in banking ecosystems. <em>Nature</em>, v. 469, p.&nbsp;351–355, 2011.</p></li>
+<li><p>HOLLAND, P. W. Statistics and causal inference. <em>Journal of the American Statistical Association</em>, v. 81, n.&nbsp;396, p.&nbsp;945–960, 1986.</p></li>
+<li><p>IMBENS, G. W.; RUBIN, D. B. <em>Causal inference for statistics, social, and biomedical sciences: an introduction.</em> Cambridge: Cambridge University Press, 2015.</p></li>
+<li><p>LITTLE, R. J. A.; RUBIN, D. B. <em>Statistical analysis with missing data.</em> 3. ed.&nbsp;Wiley, 2019.</p></li>
+<li><p>LUHMANN, N. <em>Social systems.</em> Stanford: Stanford University Press, 1996.</p></li>
+<li><p>MERTON, R. C. Option pricing when underlying stock returns are discontinuous. <em>Journal of Financial Economics</em>, v. 3, n.&nbsp;1-2, p.&nbsp;125–144, 1976.</p></li>
+<li><p>MINSKY, H. P. <em>Stabilizing an unstable economy.</em> New York: McGraw-Hill, 1986.</p></li>
+<li><p>PEARL, J. <em>Causality: models, reasoning and inference.</em> 2. ed.&nbsp;Cambridge: Cambridge University Press, 2009.</p></li>
+<li><p>PEARL, J.; MACKENZIE, D. <em>The book of why: the new science of cause and effect.</em> New York: Basic Books, 2018.</p></li>
+<li><p>PEARL, J. <em>Causal inference in statistics: a primer.</em> Wiley, 2016.</p></li>
+<li><p>RUBIN, D. B. Estimating causal effects of treatments in randomized and nonrandomized studies. <em>Journal of Educational Psychology</em>, v. 66, n.&nbsp;5, p.&nbsp;688–701, 1974.</p></li>
+<li><p>SCHRÖDINGER, E. Discussion of probability relations between separated systems. <em>Proceedings of the Cambridge Philosophical Society</em>, v. 31, p.&nbsp;555–563, 1935.</p></li>
+<li><p>SHAPIRA, Z.; VENEZIA, I. Patterns of behavior of professionally managed and independent investors. <em>Journal of Banking and Finance</em>, v. 25, p.&nbsp;1573–1587, 2001.</p></li>
+<li><p>SOUZA, M. R.; ARAÚJO, D. S.; LIMA, E. M. Supervisão Bancária e Governança Regulatória no Brasil: Um Enfoque Sistêmico. <em>Revista de Administração Pública</em>, v. 53, n.&nbsp;2, p.&nbsp;265–288, 2019.</p></li>
+<li><p>SPIRTES, P.; GLYMOUR, C.; SCHEINES, R. <em>Causation, prediction, and search.</em> 2. ed.&nbsp;Cambridge: MIT Press, 2000.</p></li>
+<li><p>SUÁREZ, J. et al.&nbsp;Systemic risk, contagion, and financial networks. <em>Banco de España Working Papers</em>, n.&nbsp;1805, 2018.</p></li>
+<li><p>VALOR ECONÔMICO. Banco Master investiu R$ 16 bi em precatórios e sofreu com inadimplência em FIDCs. <em>Valor Econômico</em>, 21 mar. 2024. Disponível em: <a href="https://valor.globo.com" class="uri">https://valor.globo.com</a>. Acesso em: 9 abr. 2025.</p></li>
+<li><p>VAN DER LAAN, M. J.; ROSE, S. <em>Targeted learning: causal inference for observational and experimental data.</em> Springer, 2011.</p></li>
+<li><p>VOITER. <em>Demonstrações Financeiras 2023 e Relatório Anual.</em> São Paulo: Banco Voiter, 2024. Disponível em: <a href="https://www.voiter.com.br" class="uri">https://www.voiter.com.br</a>. Acesso em: 8 abr. 2025.</p></li>
+<li><p>WILL BANK. <em>Informações Regulatórias – ITRs, FIDCs e Comunicados ao Mercado.</em> São Paulo: Will Financeira S.A., 2024. Disponível em: <a href="https://www.willbank.com.br" class="uri">https://www.willbank.com.br</a>. Acesso em: 7 abr. 2025.</p></li>
+<li><p>WRIGHT, S. The method of path coefficients. <em>Annals of Mathematical Statistics</em>, v. 5, n.&nbsp;3, p.&nbsp;161–215, 1934.</p></li>
+</ul>
+<p><br></p>
+<p><br></p>
+<p>Se você não conseguir comentar aqui, pode acessar a publicação atualizada que fiz no LinkedIn sobre este artigo <a href="https://www.linkedin.com/posts/hcostax_cr%C3%A9dito-como-proxy-para-ciclos-financeiros-activity-7254526734656544770-hcGr?utm_source=share&amp;utm_medium=member_desktop">NESTE LINK AQUI</a>. Eu agradeceria muito se você pudesse contribuir com o texto ou se tivesse alguma correção ou ajuste para me sugerir. Muito obrigado pelo seu tempo.</p>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Olá! 👋, você achou meu trabalho útil? Considere me pagar um café ☕, clicando aqui. 👇🏻
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://www.buymeacoffee.com/hcostax"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&amp;emoji=&amp;slug =hcostax&amp;button_colour=5F7FFF&amp;font_colour=ffffff&amp;font_family=Cookie&amp;outline_colour=000000&amp;coffee_colour=FFDD00"></a></p>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-costa2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Costa, Henrique. 2025. <span>“Mil Contrafactuais: O Caso Do Banco Master
+No Multiverso Do Colapso.”</span> April 20, 2025. <a href="https://doi.org/10.59350/tne4j-4je60">https://doi.org/10.59350/tne4j-4je60</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/henriqueqrm\.netlify\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="quant-risk/hcostax_dot_com" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024 Henrique Costa ∙ Made with <a href="https://quarto.org">Quarto</a> based on <a href="https://paulrjohnson.net/">paulrjohnson.net</a></p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../license.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

@@ -2,6 +2,7 @@
   {
     "listing": "/atom.html",
     "items": [
+      "/blog/master_bank_study/index.html",
       "/blog/financial_cycle_credit_01/index.html",
       "/blog/modelling_foundations/index.html",
       "/blog/sorte_apostas/index.html",
@@ -17,6 +18,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/master_bank_study/index.html",
       "/blog/financial_cycle_credit_01/index.html",
       "/blog/modelling_foundations/index.html",
       "/blog/sorte_apostas/index.html",
