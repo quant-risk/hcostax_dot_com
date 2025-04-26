@@ -29,7 +29,7 @@ about:
       href: https://twitter.com/hcostax
     - icon: instagram
       aria-label: Instagram
-      href: https://www.instagram.com/hcostax/
+      href: https://www.instagram.com/henrique_qrm/
     # - text: "{{< iconify fa6-brands google-scholar >}}" 
     #   aria-label: Google Scholar
     #   href: https://scholar.google.com/citations?user=
