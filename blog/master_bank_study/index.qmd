@@ -10,7 +10,7 @@ title-block-banner: true
 #doi: 10.59350/tne4j-4je60
 ---
 
-![](img/output-DAG.png)
+![](img/feature.png)
 
 <br>
 
@@ -1077,7 +1077,7 @@ Essa conclusão reforça a necessidade de incorporar análises de risco não-lin
 
 <br>
 
-Se você não conseguir comentar aqui, pode acessar a publicação atualizada que fiz no LinkedIn sobre este artigo [NESTE LINK AQUI](https://www.linkedin.com/posts/hcostax_cr%C3%A9dito-como-proxy-para-ciclos-financeiros-activity-7254526734656544770-hcGr?utm_source=share&utm_medium=member_desktop). Eu agradeceria muito se você pudesse contribuir com o texto ou se tivesse alguma correção ou ajuste para me sugerir. Muito obrigado pelo seu tempo.
+Se você não conseguir comentar aqui, pode acessar a publicação atualizada que fiz no LinkedIn sobre este artigo [NESTE LINK AQUI](https://www.linkedin.com/pulse/mil-contrafactuais-o-caso-do-banco-master-multiverso-colapso-costa-aubaf). Eu agradeceria muito se você pudesse contribuir com o texto ou se tivesse alguma correção ou ajuste para me sugerir. Muito obrigado pelo seu tempo.
 
 <br>
 
