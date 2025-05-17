@@ -2,11 +2,11 @@
 title: "Mil Contrafactuais: o caso do Banco Master no Multiverso do Colapso"
 author: "Henrique Costa"
 date: "2025-04-20"
-categories: [Risco, inferência contrafactual, redes bayesianas, colapso bancário, supervisão financeira, simulações, multiverso]
+categories: [Risco, inferência contrafactual, redes bayesianas, colapso, bancos, supervisão financeira, simulações, multiverso, DAGs, superposição, emanranhamento, quântico]
 description: "Este estudo propõe uma análise causal contrafactual do colapso do Banco Master, utilizando Diagramas Acíclicos Direcionados (DAGs), ponderação por escores de propensão (IPW) e simulações bayesianas de 1.000 mundos possíveis. Busquei mapear a arquitetura estrutural do risco, identificar padrões críticos de falência, medir impactos marginais de variáveis e avaliar a robustez da trajetória do Banco Master frente a diferentes premissas causais. Concluí que, embora a instituição estivesse formalmente em conformidade com as exigências prudenciais, suas decisões estratégicas e sua arquitetura estrutural fragilizada tornaram o colapso o desfecho mais provável em mais de 85% dos universos simulados."
 image: "feature.png"
 title-block-banner: true
-#doi: 10.59350/tne4j-4je60
+doi: 10.59350/rpts1-jvn79
 ---
 
 ![](img/feature.png)

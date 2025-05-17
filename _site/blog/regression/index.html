@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-658f2d71c7e54626fdfb2d1ae6dd74a4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dd49ecf19355d11c78ef50ac1dc704eb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -514,10 +514,10 @@ Average Marginal Effects
 <p>Based on the idea of a scientific test, in which the statistical framework is used as a tool, is the marginal effect of 0.72 statistically smaller than 1? If this is true, it will be support for the birth of a theory. This practice of testing, or better said, corroborating or refuting existing economic theories or those that are emerging, based on sample evidence, which is basically what we have just done, has a foundation based on statistical theory, in a field of study known as statistical inference (hypothesis testing).</p>
 <p>Let’s consider that the adjusted model we have just put together is a reasonably good approximation of reality, and that is one of the objectives of a model, but we need to be critical and criticize our own model, trying to understand if the estimates obtained are in accordance with the expectations of the theory being tested, which in this case is Keynes’ theory of marginal propensity to consume.</p>
 <p>Economist Milton Friedman said that a theory or hypothesis that is not verifiable with empirical evidence may not be admissible as part of scientific research. Whereas Keynes expected the marginal propensity to consume to be positive but less than 1. In our model, we estimate a marginal propensity of about 0.72. But before this figure can be accepted as a confirmation of Keynesian consumption theory, we need to statistically test this estimate to convince ourselves that it is not a result due to chance or a peculiarity of the data we use.</p>
-<p>Para isso, iremos utilizar do conceito de teste de hipotese. Nesse teste teremos que lidar com dois tipos de erros possíveis de ocorrer:</p>
+<p>To do this, we will use the concept of hypothesis testing. In this test we will have to deal with two types of possible errors:</p>
 <ul>
-<li><p>A hipótese nula é rejeitada embora seja verdadeira (erro tipo I)</p></li>
-<li><p>A hipótese nula não é rejeitada embora seja falsa (erro tipo II)</p></li>
+<li><p>The null hypothesis is rejected even though it is true (type I error)</p></li>
+<li><p>The null hypothesis is not rejected even though it is false (type II error)</p></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -525,7 +525,7 @@ Average Marginal Effects
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip with Title
+Key Concept
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -642,8 +642,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -754,7 +752,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1007,7 +1004,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
