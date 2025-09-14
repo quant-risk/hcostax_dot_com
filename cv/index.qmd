@@ -22,6 +22,15 @@ comments: false
 \
 *Federal University of Mato Grosso (Brazil)* [*2013 --- 2017*]{.cvdate}
 \
+\
+\
+**Languages**
+\
+*English* [*Basic --- Intermediate*]{.cvdate}
+\
+*Spanish* [*Basic --- Intermediate*]{.cvdate}
+\
+\
 
 ## Selected Work Experience  {{< fa briefcase >}}
 

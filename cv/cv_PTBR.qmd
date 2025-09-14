@@ -1,0 +1,159 @@
+---
+title: Henrique Costa
+subtitle: Gestão de Riscos e Finanças Quantitativas | Estratégia, Risco de Crédito e Rentabilidade
+pagetitle: "Curriculum Vitae | Henrique Costa"
+
+header-includes: >
+  <link rel="stylesheet" href="../assets/cv.css">
+resources:
+  - ../assets/cv.css
+comments: false
+---
+
+## Educação  {{< fa graduation-cap >}}
+
+\
+**Mestrado em Economia Aplicada**
+\
+*Universidade Federal de Mato Grosso (Brasil)* [*2017 --- 2019*]{.cvdate}
+\
+\
+**Bacharelado em Ciências Econômicas**
+\
+*Universidade Federal de Mato Grosso (Brasil)* [*2013 --- 2017*]{.cvdate}
+\
+\
+\
+**Idiomas**
+\
+*Ingles* [*Básico --- Intermediario*]{.cvdate}
+\
+*Espanhol* [*Básico --- Intermediario*]{.cvdate}
+\
+\
+
+## Experiências Profissionais  {{< fa briefcase >}}
+
+
+### Gestão de Risco de Credito & Risco de Mercado
+
+***Credsystem, São Paulo, SP - Brasil*** [Jun 2024 --- Atualmente]{.cvdate}
+
+Provendo: 
+
+- Riscos Integrados
+- Políticas e Validação de Modelos
+- Risco Regulatorio - Prudencial
+- Programa de Estresse
+- Modelagem de Risco de Crédito (Modelos de Perdas Esperadas)
+- Modelagem IFRS (9 & 17)
+- CMN 4.966-21 & BCB 352-23
+- Risco Mercado
+  - $\Delta$ *NII* and $\Delta$ *EVE*
+  - Monitoramento de Risco de Exposições de Mercado (Value at Risk, VaR Stressed, CVaR-ES)
+
+
+### Estrategia, Risco de Crédito e Rentabilidade
+
+***QuintoAndar, São Paulo, SP - Brasil*** [Out 2022 --- Jun 2024]{.cvdate}
+
+Provendo: 
+
+- Modelagem de Rentabilidade (NPV)
+- Modelagem de Risco de Crédito (Modelos de Perdas Esperadas)
+- Modelagem para IFRS (9 & 17)
+
+
+### Professor Orientador 
+
+***MBA em Data Science & Analytics - USP/Esalq, São Paulo, SP - Brasil*** [Set 2021 --- Abr 2023]{.cvdate}
+
+Orientador: 
+
+- Orientação para Trabalho de Conclusão de Curso para os alunos do MBA Data Science & Analytics.
+
+
+### Riscos Regulatórios e Financeiros
+
+***Banco Crefisa, São Paulo, SP - Brasil*** [Fev 2022 --- Out 2022]{.cvdate}
+
+Provendo: 
+
+- Gestão de Capital e Riscos (normativos do BCB baseados no arcabouço de Basileia) para Instituições S4
+- Monitoramento de Risco de Exposições de Mercado (Value at Risk, VaR Stressed, CVaR-ES)
+
+- Relatórios de Gestão de Riscos Financeiros e Regulatórios:
+  - Relatório Diário de Risco - DDR,
+  - Relatório Mensal de Riscos de Mercado - DRM,
+  - Relatório de Riscos de Liquidez - DRL,
+  - Relatório de Limites Operacionais - DLO and
+  - Relatório de Limites Individuais - DLI.
+
+
+### Analista de Risco em Finanças Estruturadas
+
+***Liberum Ratings, São Paulo, SP - Brasil*** [Jan 2021 --- Fev 2022]{.cvdate}
+
+Provendo: 
+
+- Avaliação de Riscos em Finanças Estruturadas (Especialidade em Fundos de Investimentos em Direitos Creditórios - FIDC)
+- Avaliação e Monitoramento de Classificação de Riscos (_ratings_)
+- Avaliação de Riscos de Mercado (macroeconômico)
+- Avaliação de Riscos Setoriais (microeconômico)
+
+
+### Analista de Riscos - Fundos de Previdência
+
+***Agenda Assessoria (Consultoria), Cuiabá, MT - Brasil*** [Jan 2020 --- Jan 2021]{.cvdate}
+
+Provendo: 
+
+- Avaliação de riscos financeiros para fundos
+- Desenvolvimento de investimentos para fundos de previdência
+- Monitoramento de Indicadores Macroêconomicos 
+- Cenários de Estresse baseados em Analises Foward-look 
+- Relatórios técnicos para Fundos de Regime Privado de Previdencia Social - RPPS
+- Avaliação de Riscos de Mercado (macroeconômico)
+- Avaliação de Riscos Setoriais (microeconômico)
+
+
+### Analista de dados e Pesquisa (Consultoria)
+
+***Fiemt - Federação das Indústrias do Estado de Mato Grosso, Cuiabá, MT - Brasil*** [---]{.cvdate}
+
+Provendo: 
+
+- Processos de Analise de Dados para o setor indústrial.
+- Desenvolvimento de _dashboards_ (PowerBI)
+- Relatórios Macroeconômicos
+
+### Analista de Crédito Empresarial
+
+***Gerencial Factoring Fomento Mercantil, Cuiabá, MT - Brasil*** [Jan 2018 --- Out 2019]{.cvdate}
+
+Provendo: 
+
+- Análise de crédito e risco corporativo para cessão de crédito.
+- Operações de aquisição de direitos creditórios (antecipação de recebíveis).
+
+
+### Estagiário do Departamento de Contabilidade e Finanças
+
+***Associação Mato-grossense dos Produtores de Algodão - AMPA, Cuiabá, MT - Brasil*** [Dez 2015 --- Dez 2016]{.cvdate}
+
+- Estagiário, no Departamento de Contabilidade e Controle Financeiro da Associação Mato-grossense dos Produtores de Algodão (AMPA - Algodão de MT).
+
+### Assistente de Ensino (Monitor) - Econometria
+
+***Universidade Federal de Mato Grosso (Brasil)*** [Jul 2014 --- Jan 2019]{.cvdate}
+
+- (Quando eu estava na graduação) Auxiliei os alunos de graduação a compreender a base teórica e prática para a resolução de problemas baseados em econometria, além da aplicação na linguagem R
+- Apoiar os alunos que participaram das disciplinas introdutórias de Ciência de Dados em Linguagem R
+- (Quando eu estava no mestrado) Auxiliei o professor de econometria nas aulas introdutórias, aplicando e corrigindo provas de econometria, além de fornecer suporte com as tarefas de casa
+
+### Assistente de Pesquisa
+
+***Universidade Federal de Mato Grosso (Brasil)*** [Jan 2014 --- Dez 2015]{.cvdate}
+
+- Assistente de pesquisa, (execução, estatísticas econômicas, produção e análise de mercado) no projeto de pesquisa, Santander Universidade Solidária - Desenvolvimento Sustentável na Bacia Hidrográfica da Pantaneira: implementação de práticas agroecológicas em Cooperangi - Poconé - MT, Banco Santander.
+
